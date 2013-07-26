@@ -1,0 +1,10 @@
+uniform sampler2D GLPT_texture;
+
+in vec2 p_texcoord;
+out vec3 color;
+
+void main(void) {
+
+	//color=texture2D(GLPT_texture,p_texcoord);
+	color=vec4(1,1,1,1);
+}

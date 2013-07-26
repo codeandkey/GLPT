@@ -1,0 +1,21 @@
+animation Idle
+	player/idle_1 50
+	player/idle_2 50
+	player/idle_3 50
+	player/idle_4 50
+end
+
+animation Walking
+	player/walk_1 60
+	player/walk_2 60
+	player/walk_3 60
+	player/walk_4 60
+	player/walk_5 60
+	player/walk_6 60
+	player/walk_7 60
+	player/walk_8 60
+end
+
+animate MidJump
+	
+end

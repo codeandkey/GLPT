@@ -1,0 +1,31 @@
+ent_player
+{
+	x 3
+	y 3
+	texture player
+}
+ent_brush
+{
+	x 3
+	y -1
+	texture dirt
+	width 6
+	height 1
+	angle 0
+}
+ent_physbox
+{
+	x 7
+	y 9
+	texture reinforced_container
+	weight 5
+	angle 0
+}
+ent_physbox
+{
+	x 6
+	y 12
+	texture reinforced_container
+	weight 5
+	angle 0
+}

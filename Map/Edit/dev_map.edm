@@ -1,0 +1,33 @@
+ent_brush
+{
+	x 0
+	y -3
+	texture dirt
+	width 34
+	height 1
+	angle -0
+}
+ent_brush
+{
+	x 6
+	y -2
+	texture dirt
+	width 1
+	height 1
+	angle -0
+}
+ent_brush
+{
+	x -23
+	y -2
+	texture dirt
+	width 1
+	height 1
+	angle -0
+}
+ent_player
+{
+	x -8
+	y 3
+	texture player
+}
