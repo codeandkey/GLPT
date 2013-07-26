@@ -6,6 +6,8 @@ animation Idle
 end
 
 animation Walking
+	player/walk_1 60
+	player/walk_2 60
 	player/walk_3 60
 	player/walk_4 60
 	player/walk_5 60
@@ -16,16 +18,4 @@ end
 
 animate MidJump
 	
-end
-
-animation BeginJump
-
-player/ascend 0
-
-end
-
-animation EndJump
-
- player/fall 0
-
 end
