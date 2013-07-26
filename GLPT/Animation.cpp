@@ -4,10 +4,18 @@
 
 void Animation::SetAnimationState(std::string state) {
 	if (current_event==state) return;
+		animation_timer_buffer.at(current_event);
+	try {
+	} catch(std::out_of_range) {
+		GLPT_logger.Print("[GLPT_animation] No state " + state + " found!");
+		return;
+	}
+
 
 	current_event=state;
 	current_animation_index=0;
 
+	if (!animation_timer_buffer[current_event].size()) return;
 	if (!animation_timer_buffer[current_event][0]) return;
 
 	ticket=GLPT_timer->CreateTicket(animation_timer_buffer[current_event][0]);

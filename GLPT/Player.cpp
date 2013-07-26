@@ -53,10 +53,6 @@ void Player::EventStep(void) {
 
 	b2World* world=GLPT_physics->GetWorld();
 
-	if (!GLPT_input->KD(VK_LEFT) && !GLPT_input->KD(VK_RIGHT)){
-		ani->SetAnimationState("Idle");
-	}
-
 	// Use quick raycasting to see if there's anything below us.
 
 	NearestCallback cast_cb;
@@ -66,6 +62,7 @@ void Player::EventStep(void) {
 
 	if (cast_cb.hit) {
 		if (GLPT_input->KD(VK_UP)) {
+			ani->SetAnimationState("BeginJump");
 			phys_object->ApplyForceToCenter(b2Vec2(0,500));
 		}
 		if (GLPT_input->KD(VK_LEFT)) {
@@ -78,8 +75,15 @@ void Player::EventStep(void) {
 			draw_object.Flip(false);
 			ani->SetAnimationState("Walking");
 		}
+		if (!GLPT_input->KD(VK_LEFT) && !GLPT_input->KD(VK_RIGHT)){
+			ani->SetAnimationState("Idle");
+		}
 	} else {
-
+		if (velo.y<0) {
+			ani->SetAnimationState("EndJump");
+		} else {
+			ani->SetAnimationState("BeginJump");
+		}
 	}
 
 }

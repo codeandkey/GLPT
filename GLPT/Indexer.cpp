@@ -22,7 +22,12 @@ ID3D10ShaderResourceView* Indexer::CreateFromFile(std::string filename) {
 
 	ID3D10ShaderResourceView* output;
 
-	D3DX10CreateShaderResourceViewFromFile(GLPT_graphics->GetGraphicsDevice(),filename.c_str(),NULL,NULL,&output,NULL);
+	HRESULT hr=D3DX10CreateShaderResourceViewFromFile(GLPT_graphics->GetGraphicsDevice(),filename.c_str(),NULL,NULL,&output,NULL);
+
+	if (FAILED(hr)) {
+		GLPT_logger.Print("[GLPT_indexer] Failed to load texture " + filename);
+		output=NULL;
+	}
 
 	return output;
 
