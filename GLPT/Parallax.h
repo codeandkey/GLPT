@@ -1,12 +1,11 @@
 #pragma once
+
 #include "GLPT.h"
 
-class Brush : public Entity {
+class Parallax : public Entity {
 public:
 	void EventCreate(EntityLoadData*);
 	void EventDraw(void);
 private:
-	Animation* ani;
-	Drawable<BasicVertex> draw_object;
-	PhysBody phys_object;
+	Drawable<BasicVertex> front_object,back_object;
 };

@@ -43,7 +43,10 @@ float4 PostPixelShader(InputPixel input) : SV_Target {
 		input.texcoord.x*=-1.0;
 	}
 
-	return GLPT_texture.Sample(linear_sample,input.texcoord);
+	float4 output=GLPT_texture.Sample(linear_sample,input.texcoord);
+
+	if (output.a==0.0) discard;
+	return output;
 }
 
 technique10 GLPT_render {

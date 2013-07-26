@@ -85,7 +85,7 @@ static bool ArgumentSet(int argc,char** argv,std::string target) {
 
 }
 
-EResult Engine::Initialize(int argc,char** argv) {
+EResult Engine::Initialize(int argc,char** argv,void(*bind_ents)(void)) {
 
 	EResult output;
 
@@ -97,11 +97,14 @@ EResult Engine::Initialize(int argc,char** argv) {
 	Timer::Create();
 
 	WindowData win_init_data;
+	std::string init_map;
 
 	win_init_data.fullscreen=ArgumentSet(argc,argv,"-fullscreen");
 	win_init_data.vertical_sync=ArgumentSet(argc,argv,"-vertical_sync");
 	win_init_data.width=atoi(GetArgumentValue(argc,argv,"-width").c_str());
 	win_init_data.height=atoi(GetArgumentValue(argc,argv,"-height").c_str());
+	init_map=GetArgumentValue(argc,argv,"-map");
+	if (init_map=="") init_map="default";
 	if (ArgumentSet(argc,argv,"-native_resolution")) win_init_data.Native();
 
 	if (!win_init_data.width) win_init_data.width=640;
@@ -120,6 +123,10 @@ EResult Engine::Initialize(int argc,char** argv) {
 	if (output.Error()) {
 		return output;
 	}
+
+	if (bind_ents) bind_ents();
+
+	GLPT_iterator->Load(init_map,false);
 
 	GLPT_logger.Print("[GLPT_engine] Initialized engine.");
 

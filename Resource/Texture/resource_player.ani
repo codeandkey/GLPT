@@ -18,14 +18,14 @@ animate MidJump
 	
 end
 
-animation BeginJump
-
-player/ascend 0
-
+animation BeginJump	
+	player/ascend 0
 end
 
 animation EndJump
+	player/fall 0
+end
 
- player/fall 0
-
+animation Dead
+	player/dead 0
 end

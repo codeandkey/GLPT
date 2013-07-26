@@ -2,20 +2,24 @@
 #include "Indexer.h"
 #include "Timer.h"
 
+Animation::Animation(void) {
+	current_event="";
+	current_animation_index=0;
+}
+
 void Animation::SetAnimationState(std::string state) {
 	if (current_event==state) return;
-		animation_timer_buffer.at(current_event);
 	try {
+		animation_buffer.at(state);
 	} catch(std::out_of_range) {
 		GLPT_logger.Print("[GLPT_animation] No state " + state + " found!");
 		return;
 	}
 
-
 	current_event=state;
 	current_animation_index=0;
 
-	if (!animation_timer_buffer[current_event].size()) return;
+	if (!animation_buffer[current_event].size()) return;
 	if (!animation_timer_buffer[current_event][0]) return;
 
 	ticket=GLPT_timer->CreateTicket(animation_timer_buffer[current_event][0]);
@@ -62,9 +66,17 @@ void Animation::CreateFromFile(std::string filename) {
 			}
 		}
 	}
+
+	//ticket=GLPT_timer->CreateTicket(animation_timer_buffer[current_event][0]);
 }
 
 void Animation::UpdateAnimation(void) {
+
+	try {
+		animation_buffer.at(current_event);
+	} catch(std::out_of_range) {
+		return;
+	}
 
 	static unsigned int next_anim_index=0;
 
@@ -81,5 +93,12 @@ void Animation::UpdateAnimation(void) {
 }
 
 ID3D10ShaderResourceView* Animation::GetCurrentTexture(void) {
+	try {
+		animation_buffer.at(current_event).at(current_animation_index);
+	} catch(std::out_of_range) {
+		GLPT_logger.Print("[GLPT_animation] Failed to index " + current_event);
+		return NULL;
+	}
+
 	return animation_buffer[current_event][current_animation_index];
 }

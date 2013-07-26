@@ -1,0 +1,11 @@
+animation ReinforcedCrate
+	physbox/reinforced_crate 0
+end
+
+animation WoodenCrate
+	physbox/crate 0
+end
+
+animation MetalCrate
+	physbox/metalbox 0
+end

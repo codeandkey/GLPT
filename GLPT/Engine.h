@@ -14,7 +14,7 @@ public:
 	static void Create(void) {
 		GLPT_engine=new Engine;
 	}
-	EResult Initialize(int,char**);
+	EResult Initialize(int,char**,void(*)(void)=NULL);
 	void End(void);
 	void Begin(void);
 	~Engine(void);

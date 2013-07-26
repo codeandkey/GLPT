@@ -23,12 +23,19 @@ void Brush::EventCreate(EntityLoadData* dat) {
 	BasicVertex vertices[6];
 
 	BasicVertex::make_rectangle(vertices,phys_desc.width,phys_desc.height);
+	ani=new Animation;
+	ani->CreateFromFile("resource_brush.ani");
 
 	draw_object.Load(vertices,6);
-	draw_object.Texturize(dtostr(dat,"texture"));
+	draw_object.Texturize("brush/"+dtostr(dat,"texture"));
+	//draw_object.SetAnimation(ani);
+
+	//ani->SetAnimationState("Dirt");
 }
 
 void Brush::EventDraw(void) {
+
+	ani->SetAnimationState("Grass");
 
 	float x,y,angle=0.0f;
 

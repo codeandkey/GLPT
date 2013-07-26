@@ -1,0 +1,9 @@
+animation Dirt
+	brush/dirt 1
+	brush/grass 1
+end
+
+animation Grass
+	brush/dirt 10
+	brush/grass 10
+end

@@ -1,6 +1,12 @@
 #include "GLPT.h"
 #include "Game.h"
 
+void BindEnts(void) {
+	GLPT_iterator->BindEntityName<RenderController>("ent_render_controller");
+	GLPT_iterator->BindEntityName<Player>("ent_player");
+	GLPT_iterator->BindEntityName<Brush>("ent_brush");
+}
+
 int main(int argc,char** argv) {
 
 	EResult input;
@@ -9,16 +15,12 @@ int main(int argc,char** argv) {
 
 	Engine::Create();
 
-	input=GLPT_engine->Initialize(argc,argv);
+	input=GLPT_engine->Initialize(argc,argv,BindEnts);
 
 	if (input.Error()) {
 		GLPT_logger.Print("[GLPT_engine] Initialization failed with error : " + input.ErrorMessage());
 		return -1;
 	}
-
-	GLPT_iterator->BindEntityName<RenderController>("ent_render_controller");
-	GLPT_iterator->BindEntityName<Player>("ent_player");
-	GLPT_iterator->BindEntityName<Brush>("ent_brush");
 
 	Shader* render_normal;
 	render_normal=new Shader;
@@ -27,11 +29,6 @@ int main(int argc,char** argv) {
 
 	// temporary.
 
-	std::string iin;
-	std::cout << "[GLPT_input] Enter map to initialize : ";
-	std::cin >> iin;
-
-	GLPT_iterator->Load(iin,false);
 	GLPT_iterator->Push(new GameCamera());
 
 	GLPT_engine->Begin();

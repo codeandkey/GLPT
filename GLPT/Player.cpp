@@ -11,7 +11,6 @@ void Player::EventCreate(EntityLoadData* data) {
 	}
 
 	phys_object=GLPT_physics->CreateBody(true,.3f,1.0f,dtof(data,"x"),dtof(data,"y"),0.0f,1.0f);
-	phys_object->SetFixedRotation(true);
 
 	BasicVertex vertices[6];
 	BasicVertex::make_rectangle(vertices,1.0f,1.0f);
@@ -24,6 +23,8 @@ void Player::EventCreate(EntityLoadData* data) {
 	ani->SetAnimationState("Idle");
 
 	draw_object.SetAnimation(ani);
+
+	dead=false;
 }
 
 void Player::EventDraw(void) {
@@ -41,12 +42,19 @@ void Player::EventDraw(void) {
 void Player::EventStep(void) {
 	// Movement control here.
 
+	if (dead) {
+		ani->SetAnimationState("Dead");
+		phys_object->SetFixedRotation(false);
+		return;
+	}
+
 	float x,y,angle;
 	float speed;
 
 	x=phys_object->GetPosition().x;
 	y=phys_object->GetPosition().y;
 	angle=phys_object->GetAngle();
+	std::string ani_state=ani->GetAnimationState();
 	b2Vec2 velo=phys_object->GetLinearVelocity();
 
 	speed=sqrt(pow(velo.x,2) + pow(velo.y,2));
@@ -57,11 +65,21 @@ void Player::EventStep(void) {
 
 	NearestCallback cast_cb;
 
-	world->RayCast(&cast_cb,b2Vec2(x-0.3f,y-1.0f),b2Vec2(x-0.3f,y-1.05f));
-	world->RayCast(&cast_cb,b2Vec2(x+0.3f,y-1.0f),b2Vec2(x+0.3f,y-1.05f));
+	world->RayCast(&cast_cb,b2Vec2(x-0.31f,y-1.01f),b2Vec2(x-0.31f,y-1.1f));
+	world->RayCast(&cast_cb,b2Vec2(x+0.31f,y-1.01f),b2Vec2(x+0.31f,y-1.1f));
+	world->RayCast(&cast_cb,b2Vec2(x,y-1.01f),b2Vec2(x,y-1.2f));
 
 	if (cast_cb.hit) {
-		if (GLPT_input->KD(VK_UP)) {
+
+		// Dead checking.
+		//if (((phys_object->GetAngle()>=3.141f && phys_object->GetAngle()<=3.141f*2.0f) || (phys_object->GetAngle()<=3.141f/-2.0f && phys_object->GetAngle()>=-3.141f*3.0f/2.0f))) {
+			//phys_object->SetLinearVelocity(b2Vec2(0,0));
+			//dead=true;
+		//}
+
+		phys_object->SetFixedRotation(true);
+
+		if (GLPT_input->KD(VK_UP) && (ani_state=="Walking" || ani_state=="Idle") && velo.y==0.0f) {
 			ani->SetAnimationState("BeginJump");
 			phys_object->ApplyForceToCenter(b2Vec2(0,500));
 		}
