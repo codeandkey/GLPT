@@ -37,7 +37,6 @@ InputPixel PostVertexShader(InputVertex input) {
 
 float4 PostPixelShader(InputPixel input) : SV_Target {
 	float4 output_color=(float4) 0;
-	return GLPT_texture.Sample(linear_sample,input.texcoord);
 
 	/*float bloom_intensity=0.002f;
 	float bloom_factor=1.0f;

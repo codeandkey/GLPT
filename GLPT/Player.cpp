@@ -96,7 +96,7 @@ void Player::EventStep(void) {
 
 	// Jumping.
 	if (GLPT_input->KD(VK_UP) && player_can_jump) {
-		phys_object->SetLinearVelocity(b2Vec2(player_velocity.x,7));
+		phys_object->SetLinearVelocity(b2Vec2(player_velocity.x,9));
 		player_velocity=phys_object->GetLinearVelocity();
 		ani->SetAnimationState("BeginJump");
 

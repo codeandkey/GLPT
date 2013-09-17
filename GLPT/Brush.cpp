@@ -34,8 +34,6 @@ void Brush::EventCreate(EntityLoadData* dat) {
 
 void Brush::EventDraw(void) {
 
-	ani->SetAnimationState("Grass");
-
 	float x,y,angle=0.0f;
 
 	x=phys_object->GetPosition().x;
