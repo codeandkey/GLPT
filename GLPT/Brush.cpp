@@ -18,7 +18,7 @@ void Brush::EventCreate(EntityLoadData* dat) {
 	phys_desc.x=dtof(dat,"x");
 	phys_desc.y=dtof(dat,"y");
 
-	phys_object=GLPT_physics->CreateBody(phys_desc);
+	phys_object=GLPT_physics->CreateBody(this,phys_desc);
 
 	BasicVertex vertices[6];
 
@@ -27,10 +27,9 @@ void Brush::EventCreate(EntityLoadData* dat) {
 	ani->CreateFromFile("resource_brush.ani");
 
 	draw_object.Load(vertices,6);
-	draw_object.Texturize("brush/"+dtostr(dat,"texture"));
-	//draw_object.SetAnimation(ani);
+	draw_object.SetAnimation(ani);
 
-	//ani->SetAnimationState("Dirt");
+	ani->SetAnimationState(dtostr(dat,"texture"));
 }
 
 void Brush::EventDraw(void) {

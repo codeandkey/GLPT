@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Library.h"
+#include "Iterator.h"
 
 class Physics;
 typedef b2Body* PhysBody;
@@ -26,8 +27,7 @@ public:
 	static void Release(void) {
 		delete GLPT_physics;
 	}
-	PhysBody CreateBody(bool dynamic,float width=1.0f, float height=1.0f,float x=0.0f,float y=0.0f,float angle=0.0f,float weight=1.0f);
-	PhysBody CreateBody(PhysBodyDesc desc);
+	PhysBody CreateBody(Entity*,PhysBodyDesc desc);
 	void UpdateWorld(void);
 	void DestroyBody(PhysBody body);
 	b2World* GetWorld(void) {return world_handle;}

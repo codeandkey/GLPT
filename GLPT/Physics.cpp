@@ -1,25 +1,10 @@
 #include "Library.h"
 #include "Physics.h"
+#include "Iterator.h"
 
 Physics* GLPT_physics;
 
-PhysBody Physics::CreateBody(bool dynamic,float width,float height, float x, float y, float angle,float weight) {
-
-	PhysBodyDesc desc;
-
-	desc.angle=angle;
-	desc.x=x;
-	desc.y=y;
-	desc.dynamic=dynamic;
-	desc.weight=weight;
-	desc.width=width;
-	desc.height=height;
-
-	return CreateBody(desc);
-
-}
-
-PhysBody Physics::CreateBody(PhysBodyDesc desc) {
+PhysBody Physics::CreateBody(Entity* caller,PhysBodyDesc desc) {
 
 	b2BodyDef body_def;
 	PhysBody body_new;
@@ -28,6 +13,7 @@ PhysBody Physics::CreateBody(PhysBodyDesc desc) {
 	body_def.position.Set(desc.x,desc.y);
 	body_def.angle=desc.angle;
 	body_def.type=(desc.dynamic) ? b2_dynamicBody : b2_staticBody;
+	body_def.userData=caller;
 
 	body_new=world_handle->CreateBody(&body_def);
 

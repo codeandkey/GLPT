@@ -182,6 +182,7 @@ void Entity::PostWarning(std::string message) {
 }
 
 void Entity::Destroy(void) {
+	this->EventDestroy();
 	iid->Remove(this);
 }
 

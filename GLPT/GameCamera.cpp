@@ -7,6 +7,8 @@ void GameCamera::EventCreate(EntityLoadData*) {
 	tz=-10.0f;
 	following_player=true;
 
+	SetIdentity("global_ent_gamecamera");
+
 }
 
 void GameCamera::EventStep(void) {
@@ -17,7 +19,9 @@ void GameCamera::EventStep(void) {
 		if (inst_player) {
 			inst_player->GetPosition(&tx,&ty);
 		} else {
-			PostWarning("GameCamera can't follow, no player entity.");
+			PostWarning("GameCamera can't follow, no player entity. Destroying.");
+			Destroy();
+			return;
 		}
 	}
 
@@ -32,4 +36,12 @@ void GameCamera::EventStep(void) {
 
 void GameCamera::FollowPlayer(bool f) {
 	following_player=f;
+}
+
+void GameCamera::GetPosition(float* x,float* y,float* z) {
+
+	if (x) *x=this->x;
+	if (y) *y=this->y;
+	if (z) *z=this->z;
+
 }

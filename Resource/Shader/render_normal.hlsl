@@ -9,7 +9,7 @@ BlendState normal_blending {
 SamplerState linear_sample {
 	Filter=ANISOTROPIC;
 	AddressU=Wrap;
-	AddressV=Wrap;
+	AddressV=Clamp;
 };
 
 float4x4 GLPT_transform;

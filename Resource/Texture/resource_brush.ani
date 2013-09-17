@@ -1,9 +1,7 @@
 animation Dirt
-	brush/dirt 1
-	brush/grass 1
+	brush/dirt 0
 end
 
 animation Grass
-	brush/dirt 10
-	brush/grass 10
+	brush/grass 0
 end

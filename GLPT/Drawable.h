@@ -62,9 +62,11 @@ public:
 		}
 
 		if (!render_shader) {
-			GLPT_logger.Print("[GLPT_drawable] Drawable object drawing without shader!");
 			render_shader=Shader::GetCurrentShader();
-			return;
+			if (!render_shader) {
+				GLPT_logger.Print("[GLPT_drawable] Drawable object drawing without shader!");
+				return;
+			}
 		}
 
 		GLPT_camera->DrawAngle(angle_r,0,0);

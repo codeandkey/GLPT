@@ -6,7 +6,17 @@ void Physbox::EventCreate(EntityLoadData* data) {
 		return;
 	}
 
-	phys_object=GLPT_physics->CreateBody(true,.3f,1.0f,dtof(data,"x"),dtof(data,"y"),0.0f,1.0f);
+	PhysBodyDesc brush_body_desc;
+
+	brush_body_desc.angle=dtof(data,"angle");
+	brush_body_desc.dynamic=true;
+	brush_body_desc.height=1.0f;
+	brush_body_desc.width=1.0f;
+	brush_body_desc.weight=0.3f;
+	brush_body_desc.x=dtof(data,"x");
+	brush_body_desc.y=dtof(data,"y");
+
+	phys_object=GLPT_physics->CreateBody(this,brush_body_desc);
 
 	BasicVertex vertices[6];
 	BasicVertex::make_rectangle(vertices,1.0f,1.0f);

@@ -9,6 +9,8 @@ public:
 	void FollowPlayer(bool);
 	void EventStep(void);
 
+	void GetPosition(float* x,float* y,float* z);
+
 private:
 
 	float x,y,z,tx,ty,tz;

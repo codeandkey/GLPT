@@ -27,6 +27,7 @@ public:
 	virtual void EventStep(void) {}
 	virtual void EventDraw(void) {}
 	virtual void EventTrigger(int,void*) {}
+	virtual void EventDestroy(void) {}
 	void Destroy(void);
 
 	void PostWarning(std::string message);

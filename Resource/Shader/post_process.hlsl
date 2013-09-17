@@ -36,7 +36,56 @@ InputPixel PostVertexShader(InputVertex input) {
 }
 
 float4 PostPixelShader(InputPixel input) : SV_Target {
-	return GLPT_texture.Sample(linear_sample,input.texcoord);
+	float4 output_color=(float4) 0;
+
+	/*float bloom_intensity=0.002f;
+	float bloom_factor=1.0f;
+	float4 sum=output_color;
+
+
+	for(float i= -4 ;i < 4; i+=bloom_factor) {
+		for (float j = -4; j < 4; j+=bloom_factor) {
+			sum += GLPT_texture.Sample(linear_sample,input.texcoord + float2(j, i)*bloom_intensity); / (8/bloom_factor);
+		}
+	}
+    if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.3) {
+       output_color = sum*sum*0.012 + GLPT_texture.Sample(linear_sample,input.texcoord);
+    } else {
+        if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.5) {
+            output_color = sum*sum*0.0009 + GLPT_texture.Sample(linear_sample,input.texcoord);
+        } else {
+            output_color = sum*sum*0.00075 + GLPT_texture.Sample(linear_sample,input.texcoord);
+        }
+    }*/
+
+	float4 output_sum=(float4) 0;
+	float bloom_distance=4.0f;
+	float bloom_factor=1.0f;
+	float bloom_interval=0.002f;
+	
+	for(float i=-bloom_distance;i<=bloom_distance;i+=bloom_factor) {
+		for (float y=-bloom_distance;y<=bloom_distance;y+=bloom_factor) {
+			float2 index_position=input.texcoord + float2(i,y) * bloom_interval;
+
+			if (index_position.x>1.0f || index_position.x < 0.0f) {
+				output_sum += GLPT_texture.Sample(linear_sample,input.texcoord) / bloom_distance;
+			} else if (index_position.y>1.0f || index_position.y < 0.0f) {
+				output_sum += GLPT_texture.Sample(linear_sample,input.texcoord) / bloom_distance;
+			} else {
+				output_sum += GLPT_texture.Sample(linear_sample,index_position) / bloom_distance;
+			}
+		}
+	}
+
+	if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.3) {
+       output_color = output_sum*output_sum*0.012 + GLPT_texture.Sample(linear_sample,input.texcoord);
+    } else if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.5) {
+        output_color = output_sum*output_sum*0.0009 + GLPT_texture.Sample(linear_sample,input.texcoord);
+    } else {
+        output_color = output_sum*output_sum*0.00075 + GLPT_texture.Sample(linear_sample,input.texcoord);
+    }
+
+	return output_color;
 }
 
 technique10 GLPT_render {

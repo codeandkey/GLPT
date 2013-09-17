@@ -67,7 +67,7 @@ void Animation::CreateFromFile(std::string filename) {
 		}
 	}
 
-	//ticket=GLPT_timer->CreateTicket(animation_timer_buffer[current_event][0]);
+	ticket=GLPT_timer->CreateTicket(animation_timer_buffer[current_event][0]);
 }
 
 void Animation::UpdateAnimation(void) {
@@ -85,9 +85,9 @@ void Animation::UpdateAnimation(void) {
 		if (next_anim_index>=animation_buffer[current_event].size()) next_anim_index=0;
 		current_animation_index=next_anim_index;
 		
-		if (!animation_timer_buffer[current_event][0]) return;
+		if (!animation_timer_buffer[current_event][current_animation_index]) return;
 
-		ticket=GLPT_timer->CreateTicket(animation_timer_buffer[current_event][0]);
+		ticket=GLPT_timer->CreateTicket(animation_timer_buffer[current_event][current_animation_index]);
 	}
 
 }

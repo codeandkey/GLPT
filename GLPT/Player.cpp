@@ -10,13 +10,22 @@ void Player::EventCreate(EntityLoadData* data) {
 		return;
 	}
 
-	phys_object=GLPT_physics->CreateBody(true,.3f,1.0f,dtof(data,"x"),dtof(data,"y"),0.0f,1.0f);
+	PhysBodyDesc player_body_desc;
+
+	player_body_desc.angle=dtof(data,"angle");
+	player_body_desc.dynamic=true;
+	player_body_desc.height=1.0f;
+	player_body_desc.width=0.7f;
+	player_body_desc.weight=0.3f;
+	player_body_desc.x=dtof(data,"x");
+	player_body_desc.y=dtof(data,"y");
+
+	phys_object=GLPT_physics->CreateBody(this,player_body_desc);
 
 	BasicVertex vertices[6];
 	BasicVertex::make_rectangle(vertices,1.0f,1.0f);
 
 	draw_object.Load(vertices,6);
-	draw_object.Texturize(dtostr(data,"texture"));
 
 	ani=new Animation();
 	ani->CreateFromFile("resource_player.ani");
@@ -25,6 +34,7 @@ void Player::EventCreate(EntityLoadData* data) {
 	draw_object.SetAnimation(ani);
 
 	dead=false;
+	initial_position=phys_object->GetPosition();
 }
 
 void Player::EventDraw(void) {
@@ -42,67 +52,97 @@ void Player::EventDraw(void) {
 void Player::EventStep(void) {
 	// Movement control here.
 
-	if (dead) {
-		ani->SetAnimationState("Dead");
-		phys_object->SetFixedRotation(false);
-		return;
+	phys_object->SetFixedRotation(true);
+
+	bool player_can_jump=false;
+	bool player_can_move=false;
+
+	b2Vec2 player_position=phys_object->GetPosition();
+	b2Vec2 player_velocity=phys_object->GetLinearVelocity();
+	b2Vec2 player_dimension=b2Vec2(0.7f,1.0f);
+
+	float player_decel_rate=1.06;
+
+	// player_can_jump assignment. Use physics raycasting and callbacks to determine.
+	// Exclude self.
+
+	float min_jump_distance=0.04f;
+
+	b2Vec2 callback_point_1_1=b2Vec2(player_position.x,player_position.y-player_dimension.y);
+	b2Vec2 callback_point_1_2=b2Vec2(player_position.x,player_position.y-player_dimension.y-min_jump_distance);
+
+	b2Vec2 callback_point_2_1=b2Vec2(player_position.x+player_dimension.x,player_position.y-player_dimension.y-min_jump_distance);
+	b2Vec2 callback_point_2_2=b2Vec2(player_position.x-player_dimension.x,player_position.y-player_dimension.y-min_jump_distance);
+
+	NearestCallback player_jump_callback;
+	GLPT_physics->GetWorld()->RayCast(&player_jump_callback,callback_point_1_1,callback_point_1_2);
+	
+	if (player_jump_callback.hit) player_can_jump=true;
+
+	GLPT_physics->GetWorld()->RayCast(&player_jump_callback,callback_point_2_1,callback_point_2_2);
+
+	if (player_jump_callback.hit) player_can_jump=true;
+
+	if (player_velocity.y!=0) player_can_jump=false;
+
+	// Done with 'player_can_jump'.
+	// Now, check for 'player_can_move'.
+
+	// For now, we can let the player move in midair. Remember to use 'player_can_jump', and just slow down the movement.
+
+	player_can_move=true;
+
+	// Now, for literal movement and animation controls.
+
+	// Jumping.
+	if (GLPT_input->KD(VK_UP) && player_can_jump) {
+		phys_object->SetLinearVelocity(b2Vec2(player_velocity.x,7));
+		player_velocity=phys_object->GetLinearVelocity();
+		ani->SetAnimationState("BeginJump");
+
+		player_can_jump=false;
 	}
 
-	float x,y,angle;
-	float speed;
+	// LR Movement.
 
-	x=phys_object->GetPosition().x;
-	y=phys_object->GetPosition().y;
-	angle=phys_object->GetAngle();
-	std::string ani_state=ani->GetAnimationState();
-	b2Vec2 velo=phys_object->GetLinearVelocity();
-
-	speed=sqrt(pow(velo.x,2) + pow(velo.y,2));
-
-	b2World* world=GLPT_physics->GetWorld();
-
-	// Use quick raycasting to see if there's anything below us.
-
-	NearestCallback cast_cb;
-
-	world->RayCast(&cast_cb,b2Vec2(x-0.31f,y-1.01f),b2Vec2(x-0.31f,y-1.1f));
-	world->RayCast(&cast_cb,b2Vec2(x+0.31f,y-1.01f),b2Vec2(x+0.31f,y-1.1f));
-	world->RayCast(&cast_cb,b2Vec2(x,y-1.01f),b2Vec2(x,y-1.2f));
-
-	if (cast_cb.hit) {
-
-		// Dead checking.
-		//if (((phys_object->GetAngle()>=3.141f && phys_object->GetAngle()<=3.141f*2.0f) || (phys_object->GetAngle()<=3.141f/-2.0f && phys_object->GetAngle()>=-3.141f*3.0f/2.0f))) {
-			//phys_object->SetLinearVelocity(b2Vec2(0,0));
-			//dead=true;
-		//}
-
-		phys_object->SetFixedRotation(true);
-
-		if (GLPT_input->KD(VK_UP) && (ani_state=="Walking" || ani_state=="Idle") && velo.y==0.0f) {
-			ani->SetAnimationState("BeginJump");
-			phys_object->ApplyForceToCenter(b2Vec2(0,500));
+	if (player_can_move) {
+		if (GLPT_input->KD(VK_RIGHT)) {
+			player_velocity.x=max(player_velocity.x,(player_can_jump ? 6 : 3.5f));
+			phys_object->SetLinearVelocity(player_velocity);
+			draw_object.Flip(false);
+			if (player_can_jump) ani->SetAnimationState("Walking");
 		}
 		if (GLPT_input->KD(VK_LEFT)) {
-			if (speed<5) phys_object->ApplyForceToCenter(b2Vec2(-10,0));
+			player_velocity.x=min(player_velocity.x,(player_can_jump ? -6 : -3.5f));
+			phys_object->SetLinearVelocity(player_velocity);
 			draw_object.Flip(true);
-			ani->SetAnimationState("Walking");
-		}
-		if (GLPT_input->KD(VK_RIGHT)) {
-			if (speed<5) phys_object->ApplyForceToCenter(b2Vec2(10,0));
-			draw_object.Flip(false);
-			ani->SetAnimationState("Walking");
-		}
-		if (!GLPT_input->KD(VK_LEFT) && !GLPT_input->KD(VK_RIGHT)){
-			ani->SetAnimationState("Idle");
-		}
-	} else {
-		if (velo.y<0) {
-			ani->SetAnimationState("EndJump");
-		} else {
-			ani->SetAnimationState("BeginJump");
+			if (player_can_jump) ani->SetAnimationState("Walking");
 		}
 	}
+
+	// Animation control.
+
+	if (!GLPT_input->KD(VK_LEFT) && !GLPT_input->KD(VK_RIGHT) &&
+	ani->GetAnimationState()=="Walking" && player_can_jump) {
+		ani->SetAnimationState("Idle");
+	}
+
+	if (!GLPT_input->KD(VK_LEFT) && !GLPT_input->KD(VK_RIGHT) &&
+	ani->GetAnimationState()=="Idle" && player_can_jump) {
+		player_velocity.x/=player_decel_rate;
+		phys_object->SetLinearVelocity(player_velocity);
+	}
+
+	if (ani->GetAnimationState()=="EndJump" && player_can_jump) {
+		ani->SetAnimationState("Idle");
+	}
+
+	if (ani->GetAnimationState()=="BeginJump" && player_velocity.y < 0) {
+		ani->SetAnimationState("EndJump");
+	}
+}
+
+void Player::EventDestroy(void) {
 
 }
 

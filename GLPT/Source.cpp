@@ -8,7 +8,7 @@ void BindEnts(void) {
 }
 
 int main(int argc,char** argv) {
-
+	
 	EResult input;
 
 	srand(static_cast<unsigned int>(time(NULL)));
@@ -22,12 +22,12 @@ int main(int argc,char** argv) {
 		return -1;
 	}
 
+	// temporary.
+
 	Shader* render_normal;
 	render_normal=new Shader;
 	render_normal->Initialize("render_normal.hlsl",BasicVertex::layout,BasicVertex::layout_size);
 	render_normal->SetAsCurrent();
-
-	// temporary.
 
 	GLPT_iterator->Push(new GameCamera());
 
