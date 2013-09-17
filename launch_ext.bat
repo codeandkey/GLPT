@@ -1,1 +1,1 @@
-start GLPT -map dide -vertical_sync
+start GLPT -vertical_sync -fullscreen -native_resolution

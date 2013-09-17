@@ -16,7 +16,7 @@
 			"texcoord",DXGI_FORMAT_R32G32_FLOAT
 		};
 		unsigned int BasicVertex::layout_size=2;
-		void BasicVertex::make_rectangle(BasicVertex* vertices,float w,float h) {
+		void BasicVertex::make_rectangle(BasicVertex* vertices,float w,float h,float stretch_w,float stretch_h) {
 
 			vertices[0].x=-w; // Tri1 : Bottom left.
 			vertices[0].y=h;
@@ -27,14 +27,14 @@
 			vertices[1].x=w;
 			vertices[1].y=-h;
 			vertices[1].z=0;
-			vertices[1].tx=w;
-			vertices[1].ty=h;
+			vertices[1].tx=(stretch_w ? stretch_w : w);
+			vertices[1].ty=(stretch_h ? stretch_h : h);
 
 			vertices[2].x=-w;
 			vertices[2].y=-h;
 			vertices[2].z=0;
 			vertices[2].tx=0;
-			vertices[2].ty=h;
+			vertices[2].ty=(stretch_h ? stretch_h : h);
 
 			vertices[3].x=-w;
 			vertices[3].y=h;
@@ -45,14 +45,14 @@
 			vertices[4].x=w;
 			vertices[4].y=h;
 			vertices[4].z=0;
-			vertices[4].tx=w;
+			vertices[4].tx=(stretch_w ? stretch_w : w);
 			vertices[4].ty=0;
 
 			vertices[5].x=w;
 			vertices[5].y=-h;
 			vertices[5].z=0;
-			vertices[5].tx=w;
-			vertices[5].ty=h;
+			vertices[5].tx=(stretch_w ? stretch_w : w);
+			vertices[5].ty=(stretch_h ? stretch_h : h);
 			
 		}
 	// end
@@ -171,7 +171,7 @@ void Engine::Begin(void) {
 		if (GLPT_input->KD(27)) End();
 		if (window_handle->RequestedClose()) End();
 
-		//Sleep(1000/60); // Manual FPS limit, for now.
+		Sleep(1000/60); // Manual FPS limit, for now.
 	}
 }
 

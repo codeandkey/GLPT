@@ -165,7 +165,7 @@ EResult Graphics::Initialize(WindowData wd,std::string post_process_shader) {
 }
 
 void Graphics::Clear(void) {
-	float cl_color[4]={0.0f,0.0f,0.1f,0.0f};
+	float cl_color[4]={0.0f,0.2f,0.27f,0.0f};
 
 	dx_device->ClearRenderTargetView(dx_texture_target,cl_color);
 	dx_device->ClearDepthStencilView(dx_depth_stencil,D3D10_CLEAR_DEPTH,1.0f,0);

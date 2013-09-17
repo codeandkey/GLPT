@@ -55,7 +55,7 @@ struct BasicVertex {
 	float tx,ty;
 	static Layout layout[2];
 	static unsigned int layout_size;
-	static void make_rectangle(BasicVertex* vertices_6,float w,float h);
+	static void make_rectangle(BasicVertex* vertices_6,float w,float h,float stretch_width=0.0f,float stretch_height=0.0f);
 };
 
 struct EResult {

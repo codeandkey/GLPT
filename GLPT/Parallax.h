@@ -7,5 +7,5 @@ public:
 	void EventCreate(EntityLoadData*);
 	void EventDraw(void);
 private:
-	std::vector<Drawable<BasicVertex>> parallax_buffer;
+	std::vector<Drawable<BasicVertex>*> parallax_buffer;
 };

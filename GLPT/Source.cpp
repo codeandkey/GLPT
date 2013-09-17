@@ -30,6 +30,7 @@ int main(int argc,char** argv) {
 	render_normal->SetAsCurrent();
 
 	GLPT_iterator->Push(new GameCamera());
+	GLPT_iterator->Push(new Parallax());
 
 	GLPT_engine->Begin();
 
