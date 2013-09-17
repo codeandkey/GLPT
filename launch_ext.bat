@@ -1,1 +1,1 @@
-start GLPT -map badass
+start GLPT -map badass -vertical_sync
