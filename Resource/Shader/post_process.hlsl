@@ -1,7 +1,7 @@
 // Post processing shader.
 
 SamplerState linear_sample {
-	Filter=MIN_MAG_MIP_LINEAR;
+	Filter=ANISOTROPIC;
 	AddressU=Wrap;
 	AddressV=Wrap;
 };
@@ -37,29 +37,10 @@ InputPixel PostVertexShader(InputVertex input) {
 
 float4 PostPixelShader(InputPixel input) : SV_Target {
 	float4 output_color=(float4) 0;
-
-	/*float bloom_intensity=0.002f;
-	float bloom_factor=1.0f;
-	float4 sum=output_color;
-
-
-	for(float i= -4 ;i < 4; i+=bloom_factor) {
-		for (float j = -4; j < 4; j+=bloom_factor) {
-			sum += GLPT_texture.Sample(linear_sample,input.texcoord + float2(j, i)*bloom_intensity); / (8/bloom_factor);
-		}
-	}
-    if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.3) {
-       output_color = sum*sum*0.012 + GLPT_texture.Sample(linear_sample,input.texcoord);
-    } else {
-        if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.5) {
-            output_color = sum*sum*0.0009 + GLPT_texture.Sample(linear_sample,input.texcoord);
-        } else {
-            output_color = sum*sum*0.00075 + GLPT_texture.Sample(linear_sample,input.texcoord);
-        }
-    }*/
+	//return GLPT_texture.Sample(linear_sample,input.texcoord);
 
 	float4 output_sum=(float4) 0;
-	float bloom_distance=4.0f;
+	float bloom_distance=2.0f;
 	float bloom_factor=1.0f;
 	float bloom_interval=0.002f;
 	

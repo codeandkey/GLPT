@@ -45,7 +45,7 @@ float4 PostPixelShader(InputPixel input) : SV_Target {
 
 	float4 output=GLPT_texture.Sample(linear_sample,input.texcoord);
 
-	if (output.a==0.0) discard;
+	if (output.a<=0.1) discard;
 	return output;
 }
 

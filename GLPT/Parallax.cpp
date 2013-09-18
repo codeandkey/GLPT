@@ -16,23 +16,34 @@ void Parallax::EventDraw(void) {
 		Destroy();
 	}
 
-	for (unsigned int i=0;i<parallax_buffer.size();i++) {
-		parallax_buffer[i]->Draw(camera_x/(parallax_buffer.size()-i+1),camera_y/(parallax_buffer.size()-i+1),0.0f,1.0f);
+	for (int x=MAX_PARALLAX_LAYERS-1;x>=0;x--) {
+		for (int i=parallax_buffer[x].size()-1;i>=0;i--) {
+			float x_offset=parallax_buffer[x][i].x_offset;
+			float y_offset=parallax_buffer[x][i].y_offset;
+			parallax_buffer[x][i].drawable_handle->Draw(camera_x/(MAX_PARALLAX_LAYERS-x+1)+x_offset,camera_y/(MAX_PARALLAX_LAYERS-x+1)+y_offset,0.0f,x+1);
+		}
 	}
 }
 
 void Parallax::EventCreate(EntityLoadData*) {
+	ZeroMemory(parallax_buffer,sizeof(std::vector<ParallaxObject>)*MAX_PARALLAX_LAYERS);
+
 	std::string parallax_depth_1="scene/grass_0";
 
-	Drawable<BasicVertex>* next_drawable=new Drawable<BasicVertex>;
+	ParallaxObject o_to_push;
+	o_to_push.drawable_handle=new Drawable<BasicVertex>;
 
 	BasicVertex vertices[6];
-	BasicVertex::make_rectangle(vertices,10.0f,10.0f,1.0f,1.0f);
+	BasicVertex::make_rectangle(vertices,50.0f,3.0f,10.0f,1.0f);
 
-	next_drawable->Load(vertices,6,Shader::GetCurrentShader());
-	next_drawable->Texturize(parallax_depth_1);
+	o_to_push.drawable_handle->Load(vertices,6,Shader::GetCurrentShader());
+	o_to_push.drawable_handle->Texturize(parallax_depth_1);
 
-	parallax_buffer.push_back(next_drawable);
-	parallax_buffer.push_back(next_drawable);
+	parallax_buffer[0].push_back(o_to_push);
+
+	o_to_push.x_offset=rand()%20/20;
+	o_to_push.y_offset=0.0f;
+
+	parallax_buffer[5].push_back(o_to_push);
 
 }

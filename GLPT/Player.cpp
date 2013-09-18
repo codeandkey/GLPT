@@ -90,7 +90,7 @@ void Player::EventStep(void) {
 
 	// For now, we can let the player move in midair. Remember to use 'player_can_jump', and just slow down the movement.
 
-	player_can_move=true;
+	player_can_move=player_can_jump;
 
 	// Now, for literal movement and animation controls.
 
@@ -137,7 +137,7 @@ void Player::EventStep(void) {
 		ani->SetAnimationState("Idle");
 	}
 
-	if (ani->GetAnimationState()=="BeginJump" && player_velocity.y < 0) {
+	if (player_velocity.y < 0 && !player_can_jump) {
 		ani->SetAnimationState("EndJump");
 	}
 }
