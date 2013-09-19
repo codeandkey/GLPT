@@ -15,7 +15,7 @@ void Player::EventCreate(EntityLoadData* data) {
 	player_body_desc.angle=dtof(data,"angle");
 	player_body_desc.dynamic=true;
 	player_body_desc.height=1.0f;
-	player_body_desc.width=0.7f;
+	player_body_desc.width=0.5f;
 	player_body_desc.weight=0.3f;
 	player_body_desc.x=dtof(data,"x");
 	player_body_desc.y=dtof(data,"y");
@@ -66,7 +66,7 @@ void Player::EventStep(void) {
 	// player_can_jump assignment. Use physics raycasting and callbacks to determine.
 	// Exclude self.
 
-	float min_jump_distance=0.04f;
+	float min_jump_distance=0.2f;
 
 	b2Vec2 callback_point_1_1=b2Vec2(player_position.x,player_position.y-player_dimension.y);
 	b2Vec2 callback_point_1_2=b2Vec2(player_position.x,player_position.y-player_dimension.y-min_jump_distance);
@@ -107,13 +107,13 @@ void Player::EventStep(void) {
 
 	if (player_can_move) {
 		if (GLPT_input->KD(VK_RIGHT)) {
-			player_velocity.x=max(player_velocity.x,(player_can_jump ? 6 : 3.5f));
+			player_velocity.x=min(player_velocity.x+=0.5f,6);
 			phys_object->SetLinearVelocity(player_velocity);
 			draw_object.Flip(false);
 			if (player_can_jump) ani->SetAnimationState("Walking");
 		}
 		if (GLPT_input->KD(VK_LEFT)) {
-			player_velocity.x=min(player_velocity.x,(player_can_jump ? -6 : -3.5f));
+			player_velocity.x=max(player_velocity.x-0.5f,-6.0f);
 			phys_object->SetLinearVelocity(player_velocity);
 			draw_object.Flip(true);
 			if (player_can_jump) ani->SetAnimationState("Walking");
@@ -133,7 +133,7 @@ void Player::EventStep(void) {
 		phys_object->SetLinearVelocity(player_velocity);
 	}
 
-	if (ani->GetAnimationState()=="EndJump" && player_can_jump) {
+	if (ani->GetAnimationState()=="EndJump" && player_can_jump && !player_velocity.y) {
 		ani->SetAnimationState("Idle");
 	}
 

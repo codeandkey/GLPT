@@ -82,6 +82,7 @@
     <ClInclude Include="Physbox.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Radiosity.h" />
     <ClInclude Include="RenderController.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="Engine.h" />
@@ -104,6 +105,7 @@
     <ClCompile Include="Physbox.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Radiosity.cpp" />
     <ClCompile Include="RenderController.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Graphics.cpp" />

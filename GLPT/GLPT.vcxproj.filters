@@ -86,6 +86,9 @@
     <ClInclude Include="Physbox.h">
       <Filter>Header Files\Implementation</Filter>
     </ClInclude>
+    <ClInclude Include="Radiosity.h">
+      <Filter>Header Files\Implementation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -140,6 +143,9 @@
       <Filter>Source Files\Implementation</Filter>
     </ClCompile>
     <ClCompile Include="Physbox.cpp">
+      <Filter>Source Files\Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="Radiosity.cpp">
       <Filter>Source Files\Implementation</Filter>
     </ClCompile>
   </ItemGroup>

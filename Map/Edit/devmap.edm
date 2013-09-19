@@ -1,0 +1,204 @@
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Grass
+	width 7.60149
+	x -1
+	y -3.5
+}
+ent_brush
+{
+	angle 6.13267
+	col_height 1
+	col_width 1
+	height 1
+	texture Grass
+	width 10
+	x 16
+	y -5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Grass
+	width 9
+	x 33.5
+	y -6.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 3.5
+	x -14.5
+	y -3.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x -17
+	y -1.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x -19
+	y 0.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x -19
+	y -1.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 2
+	x -13
+	y 2.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 4.5
+	x -6.5
+	y -8
+}
+ent_brush
+{
+	angle 1.50593
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 2.5
+	x 1
+	y -9.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 4
+	x -2
+	y -12.5
+}
+ent_brush
+{
+	angle 6.20538
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 4.99768
+	x 5
+	y -8.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x 12.5
+	y -12.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x 10.5
+	y -10.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x 10.5
+	y -12.5
+}
+ent_player
+{
+	angle 0
+	x -4
+	y -1
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 13.4299
+	x 24.5
+	y -13.5
+}
+ent_brush
+{
+	angle 0.214042
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 6.5
+	x 37.5
+	y -13.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x -11.5
+	y -5.5
+}

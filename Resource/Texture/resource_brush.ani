@@ -5,3 +5,7 @@ end
 animation Grass
 	brush/grass 0
 end
+
+animation Brick
+	brush/brick 0
+end
