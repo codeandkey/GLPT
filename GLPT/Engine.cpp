@@ -170,8 +170,6 @@ void Engine::Begin(void) {
 
 		if (GLPT_input->KD(27)) End();
 		if (window_handle->RequestedClose()) End();
-
-		Sleep(1000/60); // Manual FPS limit, for now.
 	}
 }
 

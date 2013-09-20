@@ -28,7 +28,7 @@ Physics::Physics(void) {
 	b2Vec2 gravity(0.0f,-13.0f);
 
 	world_handle=new b2World(gravity);
-	world_handle->SetAllowSleeping(true);
+	world_handle->SetAllowSleeping(false);
 
 }
 
