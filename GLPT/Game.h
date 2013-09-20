@@ -6,3 +6,5 @@
 #include "Brush.h"
 #include "Block.h"
 #include "Parallax.h"
+#include "Overlay.h"
+#include "Properties.h"

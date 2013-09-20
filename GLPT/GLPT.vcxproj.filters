@@ -89,6 +89,12 @@
     <ClInclude Include="Radiosity.h">
       <Filter>Header Files\Implementation</Filter>
     </ClInclude>
+    <ClInclude Include="Overlay.h">
+      <Filter>Header Files\Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="Properties.h">
+      <Filter>Header Files\Implementation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -148,12 +154,21 @@
     <ClCompile Include="Radiosity.cpp">
       <Filter>Source Files\Implementation</Filter>
     </ClCompile>
+    <ClCompile Include="Overlay.cpp">
+      <Filter>Source Files\Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="Properties.cpp">
+      <Filter>Source Files\Implementation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resource\Shader\post_process.hlsl">
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Resource\Shader\render_normal.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Resource\Shader\entity_overlay.hlsl">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

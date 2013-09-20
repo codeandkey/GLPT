@@ -181,8 +181,6 @@ void Graphics::Present(void) {
 
 	// Also switch back to texture rendering.
 
-	static float dir=0.0f;dir+=0.01f;
-
 	GLPT_camera->Set2D(true);
 	render_drawable.Draw();
 	GLPT_camera->Set2D(false);

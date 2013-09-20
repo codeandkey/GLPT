@@ -192,6 +192,8 @@ void Iterator::Load(std::string filename,bool append) {
 
 	filename="Map/"+filename+".cdm";
 
+	GLPT_logger.Print("[GLPT_iterator] Loading map " + filename);
+
 	if (append) this->~Iterator(); // Wipe the current entity buffer.
 
 	std::ifstream file;
@@ -207,6 +209,7 @@ void Iterator::Load(std::string filename,bool append) {
 	file.read(reinterpret_cast<char*>(&entity_count),sizeof(unsigned int));
 
 	for(unsigned int i=0;i<entity_count;i++) {
+
 		std::string type,identity;
 		unsigned int type_size,identity_size,key_count,key_size,value_size;
 		std::string key,value;
@@ -223,6 +226,7 @@ void Iterator::Load(std::string filename,bool append) {
 		file.read(reinterpret_cast<char*>(&key_count),sizeof(unsigned int));
 
 		for(unsigned int f=0;f<key_count;f++) {
+
 			file.read(reinterpret_cast<char*>(&key_size),sizeof(unsigned int));
 			key.resize(key_size);
 			file.read(&key[0],key_size);
@@ -245,4 +249,8 @@ void Iterator::Load(std::string filename,bool append) {
 
 		this->Push(new_entity,identity,&pass_data);
 	}
+
+	GLPT_logger.Print("[GLPT_iterator] Finished loading!");
+
+	file.close();
 }

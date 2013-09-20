@@ -1,8 +1,11 @@
 #include "GLPT.h"
 #include "Player.h"
+#include "Overlay.h"
+#include "Properties.h"
 
 void Player::EventCreate(EntityLoadData* data) {
 	SetIdentity("ins_player");
+	SetEventDepth(0);
 
 	if (!data) {
 		PostWarning("Player created with no initial data. Destroying.");
@@ -52,6 +55,7 @@ void Player::EventDraw(void) {
 void Player::EventStep(void) {
 	// Movement control here.
 
+
 	phys_object->SetFixedRotation(true);
 
 	bool player_can_jump=false;
@@ -59,31 +63,16 @@ void Player::EventStep(void) {
 
 	b2Vec2 player_position=phys_object->GetPosition();
 	b2Vec2 player_velocity=phys_object->GetLinearVelocity();
-	b2Vec2 player_dimension=b2Vec2(0.7f,1.0f);
+	b2Vec2 player_dimension=b2Vec2(0.5f,1.0f);
 
 	float player_decel_rate=1.06;
 
-	// player_can_jump assignment. Use physics raycasting and callbacks to determine.
-	// Exclude self.
+	Overlay* overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
+	Property* prop_entity=(Property*) GLPT_iterator->GetByIdentity("property");
 
-	float min_jump_distance=0.2f;
+	float death_mark=(prop_entity) ? prop_entity->GetDeathPosition() : -25.0f;
 
-	b2Vec2 callback_point_1_1=b2Vec2(player_position.x,player_position.y-player_dimension.y);
-	b2Vec2 callback_point_1_2=b2Vec2(player_position.x,player_position.y-player_dimension.y-min_jump_distance);
-
-	b2Vec2 callback_point_2_1=b2Vec2(player_position.x+player_dimension.x,player_position.y-player_dimension.y-min_jump_distance);
-	b2Vec2 callback_point_2_2=b2Vec2(player_position.x-player_dimension.x,player_position.y-player_dimension.y-min_jump_distance);
-
-	NearestCallback player_jump_callback;
-	GLPT_physics->GetWorld()->RayCast(&player_jump_callback,callback_point_1_1,callback_point_1_2);
-	
-	if (player_jump_callback.hit) player_can_jump=true;
-
-	GLPT_physics->GetWorld()->RayCast(&player_jump_callback,callback_point_2_1,callback_point_2_2);
-
-	if (player_jump_callback.hit) player_can_jump=true;
-
-	if (player_velocity.y!=0) player_can_jump=false;
+	player_can_jump=Grounded();
 
 	// Done with 'player_can_jump'.
 	// Now, check for 'player_can_move'.
@@ -99,8 +88,11 @@ void Player::EventStep(void) {
 		phys_object->SetLinearVelocity(b2Vec2(player_velocity.x,9));
 		player_velocity=phys_object->GetLinearVelocity();
 		ani->SetAnimationState("BeginJump");
+	}
 
-		player_can_jump=false;
+	if (!GLPT_input->KD(VK_UP) && player_velocity.y>0) {
+		player_velocity.y/=1.05;
+		phys_object->SetLinearVelocity(player_velocity);
 	}
 
 	// LR Movement.
@@ -110,13 +102,13 @@ void Player::EventStep(void) {
 			player_velocity.x=min(player_velocity.x+=0.5f,6);
 			phys_object->SetLinearVelocity(player_velocity);
 			draw_object.Flip(false);
-			if (player_can_jump) ani->SetAnimationState("Walking");
+			if (player_can_jump && ani->GetAnimationState()!="Walking") ani->SetAnimationState("Walking");
 		}
 		if (GLPT_input->KD(VK_LEFT)) {
 			player_velocity.x=max(player_velocity.x-0.5f,-6.0f);
 			phys_object->SetLinearVelocity(player_velocity);
 			draw_object.Flip(true);
-			if (player_can_jump) ani->SetAnimationState("Walking");
+			if (player_can_jump && ani->GetAnimationState()!="Walking") ani->SetAnimationState("Walking");
 		}
 	}
 
@@ -137,8 +129,27 @@ void Player::EventStep(void) {
 		ani->SetAnimationState("Idle");
 	}
 
-	if (player_velocity.y < 0 && !player_can_jump) {
+	if (player_velocity.y < 0 && !player_can_jump && ani->GetAnimationState()!="EndJump") {
 		ani->SetAnimationState("EndJump");
+	}
+
+	if (player_position.y < death_mark) {
+		if (overlay_entity) {
+			overlay_entity->SetFadeData(1.0f,0.0f,0.0f,(25-abs((death_mark-25)-player_position.y))/25.0f);
+		}
+	} else {
+		float over_r,over_g,over_b,over_a;
+		overlay_entity->GetFadeData(&over_r,&over_g,&over_b,&over_a);
+
+		if (over_r==1.0f && over_g==1.0f && over_b==1.0f && over_a) {
+			overlay_entity->SetFadeData(1.0f,1.0f,1.0f,over_a/1.02f);
+		}
+	}
+
+	if (player_position.y <= death_mark-25.0f) {
+		player_position=initial_position;
+		phys_object->SetTransform(initial_position,0.0f);
+		if (overlay_entity) overlay_entity->SetFadeData(1.0f,1.0f,1.0f,1.0f);
 	}
 }
 
@@ -158,4 +169,44 @@ void Player::GetPosition(float* x,float* y) {
 		*y=pos.y;
 	}
 
+}
+
+bool Player::Grounded(void) {
+
+	bool ground_hit=false;
+
+	b2Vec2 player_position=phys_object->GetPosition();
+	b2Vec2 player_velocity=phys_object->GetLinearVelocity();
+	b2Vec2 player_dimension=b2Vec2(0.5f,1.0f);
+
+	int contact_count=GLPT_physics->GetWorld()->GetContactCount();
+	b2Contact* contact_buffer=GLPT_physics->GetWorld()->GetContactList();
+
+	if (player_velocity.y) return false;
+
+	while(contact_buffer) {
+		if (contact_buffer->GetFixtureA()->GetUserData()!=this && contact_buffer->GetFixtureB()->GetUserData()!=this && contact_buffer->IsTouching()) {
+			contact_buffer=contact_buffer->GetNext();
+			continue;
+		}
+
+		b2WorldManifold contact_mani;
+
+		ground_hit=true;
+
+		contact_buffer->GetWorldManifold(&contact_mani);
+		int point_count=contact_buffer->GetManifold()->pointCount;
+
+		for (int f=0;f<point_count;f++) {
+			ground_hit &= (contact_mani.points[f].y <= player_position.y - player_dimension.y);
+		}
+
+		contact_buffer=contact_buffer->GetNext();
+
+		if (ground_hit) {
+			return true;
+		}
+	}
+
+	return false;
 }

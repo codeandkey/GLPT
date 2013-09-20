@@ -88,3 +88,7 @@ void Shader::Blur(float blur) {
 void Shader::FlipH(bool flip) {
 	dx_effect->GetVariableByName("GLPT_flip_horizontal")->AsScalar()->SetBool(flip);
 }
+
+void Shader::SetVariant(std::string name,float value) {
+	dx_effect->GetVariableByName(name.c_str())->AsScalar()->SetFloat(value);
+}

@@ -7,6 +7,7 @@ Physics* GLPT_physics;
 PhysBody Physics::CreateBody(Entity* caller,PhysBodyDesc desc) {
 
 	b2BodyDef body_def;
+	b2FixtureDef fix_def;
 	PhysBody body_new;
 	b2PolygonShape body_shape;
 
@@ -18,7 +19,12 @@ PhysBody Physics::CreateBody(Entity* caller,PhysBodyDesc desc) {
 	body_new=world_handle->CreateBody(&body_def);
 
 	body_shape.SetAsBox(desc.width,desc.height);
-	body_new->CreateFixture(&body_shape,desc.weight / (desc.width*desc.height*4));
+
+	fix_def.userData=body_def.userData;
+	fix_def.density=desc.weight / (desc.width*desc.height*4);
+	fix_def.shape=&body_shape;
+
+	body_new->CreateFixture(&fix_def);
 
 	return body_new;
 }

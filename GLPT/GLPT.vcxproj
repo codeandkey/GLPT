@@ -78,10 +78,12 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
+    <ClInclude Include="Overlay.h" />
     <ClInclude Include="Parallax.h" />
     <ClInclude Include="Physbox.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Properties.h" />
     <ClInclude Include="Radiosity.h" />
     <ClInclude Include="RenderController.h" />
     <ClInclude Include="Drawable.h" />
@@ -101,10 +103,12 @@
     <ClCompile Include="Brush.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GameCamera.cpp" />
+    <ClCompile Include="Overlay.cpp" />
     <ClCompile Include="Parallax.cpp" />
     <ClCompile Include="Physbox.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Properties.cpp" />
     <ClCompile Include="Radiosity.cpp" />
     <ClCompile Include="RenderController.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -120,6 +124,11 @@
   <ItemGroup>
     <None Include="..\Resource\Shader\post_process.hlsl" />
     <None Include="..\Resource\Shader\render_normal.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resource\Shader\entity_overlay.hlsl">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

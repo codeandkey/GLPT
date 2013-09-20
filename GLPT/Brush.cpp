@@ -1,6 +1,8 @@
 #include "Brush.h"
 
 void Brush::EventCreate(EntityLoadData* dat) {
+	SetEventDepth(0);
+
 
 	if (!dat) {
 		PostWarning("Trying to create a brush without initialization data! Destroying.");

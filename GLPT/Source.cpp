@@ -5,6 +5,7 @@ void BindEnts(void) {
 	GLPT_iterator->BindEntityName<RenderController>("ent_render_controller");
 	GLPT_iterator->BindEntityName<Player>("ent_player");
 	GLPT_iterator->BindEntityName<Brush>("ent_brush");
+	GLPT_iterator->BindEntityName<Property>("global_properties");
 }
 
 int main(int argc,char** argv) {
@@ -31,6 +32,7 @@ int main(int argc,char** argv) {
 
 	GLPT_iterator->Push(new GameCamera());
 	GLPT_iterator->Push(new Parallax());
+	GLPT_iterator->Push(new Overlay());
 
 	GLPT_engine->Begin();
 

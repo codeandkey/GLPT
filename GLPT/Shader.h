@@ -29,6 +29,7 @@ public:
 	void Texture(ID3D10ShaderResourceView*);
 	void Blur(float);
 	void FlipH(bool);
+	void SetVariant(std::string,float);
 	void Update(void); // Update changing uniforms such as random numbers. Should be called post-draw.
 
 private:

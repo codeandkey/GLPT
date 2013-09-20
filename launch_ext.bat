@@ -1,1 +1,1 @@
-start GLPT -vertical_sync -fullscreen -native_resolution -map journey
+start GLPT -vertical_sync -fullscreen -native_resolution -map mymap
