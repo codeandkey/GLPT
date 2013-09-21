@@ -1021,28 +1021,6 @@ ent_brush
 	angle 0
 	col_height 1
 	col_width 1
-	height 1
-	texture Brick
-	width 1
-	x 120.5
-	y 30.5
-}
-ent_brush
-{
-	angle 0
-	col_height 1
-	col_width 1
-	height 1
-	texture Brick
-	width 1
-	x 120.5
-	y 28.5
-}
-ent_brush
-{
-	angle 0
-	col_height 1
-	col_width 1
 	height 0.5
 	texture Brick
 	width 1
@@ -1059,17 +1037,6 @@ ent_brush
 	width 1
 	x 118.5
 	y 18.5
-}
-ent_brush
-{
-	angle 0
-	col_height 1
-	col_width 1
-	height 1
-	texture Brick
-	width 1
-	x 60.5
-	y 26.5
 }
 ent_brush
 {
@@ -1521,39 +1488,6 @@ ent_brush
 	width 1
 	x 122.5
 	y 33.5
-}
-ent_brush
-{
-	angle 0
-	col_height 1
-	col_width 1
-	height 1
-	texture Brick
-	width 1
-	x 122.5
-	y 31.5
-}
-ent_brush
-{
-	angle 0
-	col_height 1
-	col_width 1
-	height 1
-	texture Brick
-	width 1
-	x 122.5
-	y 29.5
-}
-ent_brush
-{
-	angle 0
-	col_height 1
-	col_width 1
-	height 1
-	texture Brick
-	width 1
-	x 122.5
-	y 27.5
 }
 ent_brush
 {
@@ -2148,4 +2082,26 @@ ent_brush
 	width 0.5
 	x 88
 	y 25.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 0.5
+	x 122
+	y 26
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 0.5
+	x 123
+	y 25
 }
