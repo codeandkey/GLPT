@@ -17,7 +17,7 @@ void Player::EventCreate(EntityLoadData* data) {
 
 	player_body_desc.angle=dtof(data,"angle");
 	player_body_desc.dynamic=true;
-	player_body_desc.height=1.0f;
+	player_body_desc.height=0.9f;
 	player_body_desc.width=0.5f;
 	player_body_desc.weight=0.3f;
 	player_body_desc.x=dtof(data,"x");
@@ -36,8 +36,10 @@ void Player::EventCreate(EntityLoadData* data) {
 
 	draw_object.SetAnimation(ani);
 
-	dead=false;
+	initial_player_spawn=true;
 	initial_position=phys_object->GetPosition();
+
+	
 }
 
 void Player::EventDraw(void) {
@@ -55,6 +57,14 @@ void Player::EventDraw(void) {
 void Player::EventStep(void) {
 	// Movement control here.
 
+	if (initial_player_spawn) {
+		Overlay* overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
+		if (overlay_entity) {
+			overlay_entity->SetFadeData(1.0f,1.0f,1.0f,1.0f);
+		}
+		
+		initial_player_spawn=false;
+	}
 
 	phys_object->SetFixedRotation(true);
 
@@ -63,7 +73,7 @@ void Player::EventStep(void) {
 
 	b2Vec2 player_position=phys_object->GetPosition();
 	b2Vec2 player_velocity=phys_object->GetLinearVelocity();
-	b2Vec2 player_dimension=b2Vec2(0.5f,1.0f);
+	b2Vec2 player_dimension=b2Vec2(0.5f,0.9f);
 
 	float player_decel_rate=1.06;
 
@@ -85,7 +95,7 @@ void Player::EventStep(void) {
 
 	// Jumping.
 	if (GLPT_input->KD(VK_UP) && player_can_jump) {
-		phys_object->SetLinearVelocity(b2Vec2(player_velocity.x,9));
+		phys_object->SetLinearVelocity(b2Vec2(player_velocity.x,9.5f));
 		player_velocity=phys_object->GetLinearVelocity();
 		ani->SetAnimationState("BeginJump");
 
@@ -179,7 +189,7 @@ bool Player::Grounded(void) {
 
 	b2Vec2 player_position=phys_object->GetPosition();
 	b2Vec2 player_velocity=phys_object->GetLinearVelocity();
-	b2Vec2 player_dimension=b2Vec2(0.5f,1.0f);
+	b2Vec2 player_dimension=b2Vec2(0.5f,0.9f);
 
 	int contact_count=GLPT_physics->GetWorld()->GetContactCount();
 	b2Contact* contact_buffer=GLPT_physics->GetWorld()->GetContactList();

@@ -18,6 +18,9 @@
     <Filter Include="Source Files\Implementation">
       <UniqueIdentifier>{e2207a95-082f-424f-b07a-95a8655b15ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Implementation\Triggers">
+      <UniqueIdentifier>{4a95daf3-802f-475c-82c8-0d18629a4293}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library.h">
@@ -95,6 +98,9 @@
     <ClInclude Include="Properties.h">
       <Filter>Header Files\Implementation</Filter>
     </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>Header Files\Implementation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -169,6 +175,9 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Resource\Shader\entity_overlay.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="radiosity.hlsl">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

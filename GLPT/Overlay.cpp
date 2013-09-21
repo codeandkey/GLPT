@@ -13,10 +13,11 @@ void Overlay::EventCreate(EntityLoadData*) {
 
 	drawable_handle.Load(vertices,6,overlay_shader);
 
-	//SetFadeData(0.0f,0.0f,0.0f,0.0f);
+	SetFadeData(1.0f,1.0f,1.0f,0.0f);
 }
 
 void Overlay::EventDraw(void) {
+
 	float camera_x=0.0f,camera_y=0.0f,camera_z=-6.0f;
 
 	GameCamera* camera=(GameCamera*) GLPT_iterator->GetByIdentity("global_ent_gamecamera");

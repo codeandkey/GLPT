@@ -25,7 +25,8 @@ void Physbox::EventCreate(EntityLoadData* data) {
 
 	draw_object.Load(vertices,6);
 	draw_object.Texturize("physbox/" + dtostr(data,"texture"));
-	//draw_object.SetAnimation(&ani);
+
+	draw_object.SetAnimation(&ani);
 }
 
 void Physbox::EventDraw(void) {

@@ -36,7 +36,7 @@ void Parallax::EventCreate(EntityLoadData*) {
 	o_to_push.drawable_handle=new Drawable<BasicVertex>;
 
 	BasicVertex vertices[6];
-	BasicVertex::make_rectangle(vertices,50.0f,3.0f,10.0f,1.0f);
+	BasicVertex::make_rectangle(vertices,500.0f,7.5f,20.0f,1.0f);
 
 	o_to_push.drawable_handle->Load(vertices,6,Shader::GetCurrentShader());
 	o_to_push.drawable_handle->Texturize(parallax_depth_1);
