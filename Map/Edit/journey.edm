@@ -473,19 +473,8 @@ ent_brush
 	col_width 1
 	height 0.5
 	texture Brick
-	width 5.5
-	x 52.5
-	y 22
-}
-ent_brush
-{
-	angle 0
-	col_height 1
-	col_width 1
-	height 1
-	texture Brick
-	width 1
-	x 60
+	width 6
+	x 53.5
 	y 22
 }
 ent_brush
@@ -1288,7 +1277,7 @@ ent_brush
 	height 1
 	texture Brick
 	width 13.5
-	x 72.5
+	x 73
 	y 21.5
 }
 ent_brush
@@ -1620,17 +1609,6 @@ ent_brush
 	width 1.5
 	x 86.5
 	y 26
-}
-ent_brush
-{
-	angle 0
-	col_height 1
-	col_width 1
-	height 0
-	texture Dirt
-	width 0.5
-	x 101
-	y 37.5
 }
 ent_brush
 {
@@ -2104,4 +2082,1423 @@ ent_brush
 	width 0.5
 	x 123
 	y 25
+}
+ent_brush
+{
+	angle 3.92625
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 0.5
+	x 42.5
+	y -7.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0.5
+	x 45
+	y -10
+}
+ent_brush
+{
+	angle 4.7115
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 0.5
+	x 39
+	y -7
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0
+	texture Dirt
+	width 1
+	x 50.7991
+	y -3.44981
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 1.5
+}
+ent_brush
+{
+	angle 5.49675
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 0
+	x 45.2491
+	y 6.45017
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 19.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 17.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 15.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 13.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 11.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 0
+	x 60
+	y 9.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 9.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 7.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 5.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y 3.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y -0.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y -2.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 60
+	y -4.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 69
+	y -10
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 73.5
+	y -10
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 69
+	y -9
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 73.5
+	y -9
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 73.5
+	y -8
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 78
+	y -10
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 78
+	y -9
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 78
+	y -8
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 78
+	y -7
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 82.5
+	y -10
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 82.5
+	y -9
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 82.5
+	y -8
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 82.5
+	y -7
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 82.5
+	y -6
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 87
+	y -10
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 87
+	y -9
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 87
+	y -8
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 87
+	y -7
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 87
+	y -6
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 120.5
+	y 26
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 121.5
+	y 25
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 11.5
+	x 72
+	y -1
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 19.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 17.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 15.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 13.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 11.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 9.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 7.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 11.5
+	x 118
+	y -14
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 5.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 3.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y 1.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y -0.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y -2.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y -4.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y -6.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y -8.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y -10.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 129
+	y -12.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 115.5
+	y -8.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 115.5
+	y -10.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 115.5
+	y -7
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 120
+	y -10.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 120
+	y -9
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 124.5
+	y -11
+}
+ent_brush
+{
+	angle 6.17488
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 111
+	y -10.5
+}
+ent_brush
+{
+	angle 0.123952
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 111
+	y -8.5
+}
+ent_brush
+{
+	angle 6.11257
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 111
+	y -6.5
+}
+ent_brush
+{
+	angle 0.142854
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 111
+	y -5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 106.5
+	y -8.5
+}
+ent_brush
+{
+	angle 0.132792
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 102
+	y -6.5
+}
+ent_brush
+{
+	angle 6.18409
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 102
+	y -4.5
+}
+ent_brush
+{
+	angle 0.0796032
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 102
+	y -2.5
+}
+ent_brush
+{
+	angle 6.16632
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 102
+	y -1
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 3.5
+	x 66.5
+	y -11
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 73.5
+	y -11
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 78
+	y -11
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 82.5
+	y -11
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 87
+	y -11
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 106.5
+	y -6.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 106.5
+	y -4.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 106.5
+	y -3
+}
+ent_brush
+{
+	angle 5.94287
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 92.5
+	y -10
+}
+ent_brush
+{
+	angle 6.02679
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 97.5
+	y -13
+}
+ent_brush
+{
+	angle 5.08732
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 88.5
+	y -6.5
+}
+ent_brush
+{
+	angle 5.65771
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 91
+	y -8.5
+}
+ent_brush
+{
+	angle 4.81876
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 88.5
+	y -8.5
+}
+ent_brush
+{
+	angle 6.14077
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 89
+	y -10
+}
+ent_brush
+{
+	angle 5.90636
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 88.5
+	y -12.5
+}
+ent_brush
+{
+	angle 0.412406
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 89.5
+	y -11.5
+}
+ent_brush
+{
+	angle 0.163095
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 90
+	y -13
+}
+ent_brush
+{
+	angle 5.7566
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 90.5
+	y -9.5
+}
+ent_brush
+{
+	angle 0.168675
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 91.5
+	y -10
+}
+ent_brush
+{
+	angle 5.64887
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 92
+	y -12.5
+}
+ent_brush
+{
+	angle 6.18999
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 84.5
+	y -1
+}
+ent_brush
+{
+	angle 0.115962
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 86.5
+	y -1
+}
+ent_brush
+{
+	angle 5.81836
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 88
+	y -1.5
+}
+ent_brush
+{
+	angle 0.13279
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 94
+	y -12
+}
+ent_brush
+{
+	angle 0.587606
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 93.5
+	y -13
+}
+ent_brush
+{
+	angle 5.84743
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 95.5
+	y -13
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 7.5
+	x 99.5
+	y -14
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 16.5
+	x 76
+	y -14
+}
+ent_brush
+{
+	angle 0.236179
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 87
+	y -13
+}
+ent_brush
+{
+	angle 5.98942
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1.2626
+	x 99
+	y -13.5
+}
+ent_brush
+{
+	angle 0.272461
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 97.5
+	y -2.5
+}
+ent_brush
+{
+	angle 0.248381
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 97.5
+	y 1
+}
+ent_brush
+{
+	angle 6.12057
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 97.5
+	y -0.5
+}
+ent_brush
+{
+	angle 6.16627
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 97.5
+	y -4.5
+}
+ent_brush
+{
+	angle 5.71706
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 96
+	y -12
+}
+ent_brush
+{
+	angle 5.76944
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 94.5
+	y -11
+}
+ent_brush
+{
+	angle 5.878
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 91
+	y -11
+}
+ent_brush
+{
+	angle 5.87281
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 92.5
+	y -11
+}
+ent_brush
+{
+	angle 6.08179
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 89.5
+	y -8.5
+}
+ent_brush
+{
+	angle 5.91403
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 89.5
+	y -7.5
+}
+ent_brush
+{
+	angle 4.7115
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 0.5
+	x 49
+	y -11
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 2
+	x 61
+	y -11
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 54.5
+	y -11
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 2.5
+	x 57
+	y -14
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 55
+	y -12.5
+}
+ent_brush
+{
+	angle 6.00462
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 93
+	y -4.5
+}
+ent_brush
+{
+	angle 0.0637498
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 93
+	y -2.5
+}
+ent_brush
+{
+	angle 6.09378
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 93
+	y -0.5
+}
+ent_brush
+{
+	angle 0.0595457
+	col_height 1
+	col_width 1
+	height 1
+	texture Brick
+	width 0.5
+	x 93
+	y 1.5
+}
+ent_brush
+{
+	angle 6.19001
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 1
+	x 93
+	y 3
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 3
+	x -18.5
+	y 3
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Grass
+	width 1
+	x -18.5
+	y 4.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 1
+	x -18.5
+	y 3.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Grass
+	width 1
+	x -20.5
+	y 4.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 1
+	x -20.5
+	y 3.5
 }
