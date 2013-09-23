@@ -3,6 +3,7 @@
 #include "Graphics.h"
 
 Shader* Shader::current_shader=NULL;
+Shader* Shader::bound_shader=NULL;
 
 EResult Shader::Initialize(std::string filename,Layout* input_layout,unsigned int element_count) {
 	EResult output;
@@ -53,19 +54,23 @@ EResult Shader::Initialize(std::string filename,Layout* input_layout,unsigned in
 }
 
 void Shader::Bind(void) {
+
+	ID3D10InputLayout* _dx_input_layout;
+	GLPT_graphics->GetGraphicsDevice()->IAGetInputLayout(&_dx_input_layout);
+
 	D3D10_TECHNIQUE_DESC dx_shader_desc;
 
-	GLPT_graphics->GetGraphicsDevice()->IASetInputLayout(dx_input_layout);
+	if (_dx_input_layout!=dx_input_layout) {
+		GLPT_graphics->GetGraphicsDevice()->IASetInputLayout(dx_input_layout);
+	}
 
 	dx_effect->GetTechniqueByName("GLPT_render")->GetDesc(&dx_shader_desc);
 
 	for(unsigned int i=0;i<dx_shader_desc.Passes;i++) {
 		dx_effect->GetTechniqueByName("GLPT_render")->GetPassByIndex(i)->Apply(0);
 	}
-}
 
-void Shader::Update(void) {
-	dx_effect->GetVariableByName("GLPT_random_number")->AsScalar()->SetFloat((float) rand() / (float)  RAND_MAX);
+	Shader::bound_shader=this;
 }
 
 void Shader::Release(void) {
@@ -74,6 +79,8 @@ void Shader::Release(void) {
 }
 
 void Shader::Texture(ID3D10ShaderResourceView* texture) {
+	if (current_texture==texture) return;
+	
 	dx_effect->GetVariableByName("GLPT_texture")->AsShaderResource()->SetResource(texture);
 }
 

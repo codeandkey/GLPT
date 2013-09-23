@@ -22,8 +22,12 @@ public:
 	D3DXMATRIX GetTransform(void);
 private:
 	Camera(void);
+	void Update(void);
+
 	bool mode_2d;
 	float x,y,z,lx,ly,lz;
 	float fov;
 	float dx,dy,dz,dxy,dxz,dyz;
+
+	D3DXMATRIX world,view,proj;
 };

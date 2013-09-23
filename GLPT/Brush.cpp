@@ -1,4 +1,5 @@
 #include "Brush.h"
+#include "Player.h"
 
 void Brush::EventCreate(EntityLoadData* dat) {
 	SetEventDepth(0);
@@ -37,10 +38,24 @@ void Brush::EventCreate(EntityLoadData* dat) {
 void Brush::EventDraw(void) {
 
 	float x,y,angle=0.0f;
+	static Player* player_object=(Player*) GLPT_iterator->GetByIdentity("ins_player");
 
 	x=phys_object->GetPosition().x;
 	y=phys_object->GetPosition().y;
 	angle=phys_object->GetAngle();
+
+	if (player_object) {
+		float player_x,player_y;
+
+		player_object->GetPosition(&player_x,&player_y);
+
+
+		if (sqrt(pow(player_x-x,2)+pow(player_y-y,2)) >  30.0f) {
+			return;
+		}
+	} else {
+		player_object=(Player*) GLPT_iterator->GetByIdentity("ins_player");
+	}
 
 	draw_object.Draw(x,y,angle);
 

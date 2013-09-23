@@ -67,7 +67,7 @@ void Animation::CreateFromFile(std::string filename) {
 		}
 	}
 
-	ticket=GLPT_timer->CreateTicket(animation_timer_buffer[current_event][0]);
+	//ticket=GLPT_timer->CreateTicket(animation_timer_buffer[current_event][0]);
 }
 
 void Animation::UpdateAnimation(void) {

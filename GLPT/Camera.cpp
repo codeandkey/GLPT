@@ -15,6 +15,8 @@ void Camera::SetPosition(float x,float y, float z) {
 	this->x=x;
 	this->y=y;
 	this->z=z;
+
+	Update();
 }
 
 void Camera::GetPosition(float* x,float* y,float* z) {
@@ -27,41 +29,51 @@ void Camera::GetPosition(float* x,float* y,float* z) {
 
 void Camera::SetFOV(float fov) {
 	this->fov=fov * 3.141f / 180.0f;
+
+	Update();
 }
 
 void Camera::LookAt(float x, float y, float z) {
 	lx=x;
 	ly=y;
 	lz=z;
+
+	Update();
 }
 
 void Camera::DrawPosition(float x, float y, float z) {
 	dx=x;
 	dy=y;
 	dz=z;
+
+	Update();
 }
 
 void Camera::DrawAngle(float xy,float xz, float yz) {
 	dxy=xy;
 	dxz=xz;
 	dyz=yz;
+
+	Update();
+}
+
+void Camera::Update(void) {
+	D3DXMATRIX rotate;
+
+	D3DXMatrixTranslation(&world,dx,dy,dz);
+	D3DXMatrixRotationZ(&rotate,dxy);
+
+	world=rotate * world;
+
+	D3DXMatrixLookAtLH(&view,&D3DXVECTOR3(x,y,z),&D3DXVECTOR3(lx,ly,lz),&D3DXVECTOR3(0,1,0));
+	D3DXMatrixPerspectiveFovLH(&proj,fov,(float) GLPT_width / (float) GLPT_height,0.1f,1000.0f);
 }
 
 D3DXMATRIX Camera::GetTransform(void) {
-
-	D3DXMATRIX translate,rotate,projection,view;
-	D3DXMatrixTranslation(&translate,dx,dy,dz);
-	D3DXMatrixRotationZ(&rotate,dxy);
-
-	translate=rotate * translate;
-
 	if (mode_2d) {
-		D3DXMatrixOrthoLH(&projection,2.0f,2.0f,0.0f,10.0f);
-		return (translate * projection);
+		D3DXMatrixOrthoLH(&proj,2.0f,2.0f,0.0f,10.0f);
+		return (world * proj);
 	}
 
-	D3DXMatrixLookAtLH(&view,&D3DXVECTOR3(x,y,z),&D3DXVECTOR3(lx,ly,lz),&D3DXVECTOR3(0,1,0));
-	D3DXMatrixPerspectiveFovLH(&projection,fov,(float) GLPT_width / (float) GLPT_height,0.1f,1000.0f);
-
-	return (translate * view * projection);
+	return (world * view * proj);
 }

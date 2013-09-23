@@ -74,7 +74,6 @@ public:
 
 		render_shader->Transform(GLPT_camera->GetTransform());
 
-		render_shader->Update();
 		render_shader->Texture(texture);
 		render_shader->FlipH(hflip);
 

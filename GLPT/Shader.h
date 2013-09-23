@@ -30,10 +30,11 @@ public:
 	void Blur(float);
 	void FlipH(bool);
 	void SetVariant(std::string,float);
-	void Update(void); // Update changing uniforms such as random numbers. Should be called post-draw.
 
 private:
 	static Shader* current_shader;
+	static Shader* bound_shader;
+	ID3D10ShaderResourceView* current_texture;
 	ID3D10Effect* dx_effect;
 	ID3D10InputLayout* dx_input_layout;
 	std::string shader_name;

@@ -24,13 +24,10 @@ struct InputVertex {
 struct InputPixel {
 	float4 position : SV_POSITION;
 	float2 texcoord : TEXCOORD;
-	float width : WIDTH;
 };
 
 InputPixel PostVertexShader(InputVertex input) {
 	InputPixel output;
-
-	output.width=abs(input.position.x);
 
 	output.position = mul(float4(input.position,1.0),GLPT_transform);
 	output.texcoord=input.texcoord;
