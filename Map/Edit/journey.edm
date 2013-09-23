@@ -1979,17 +1979,6 @@ ent_brush
 	col_height 1
 	col_width 1
 	height 1
-	texture Dirt
-	width 0
-	x 101.5
-	y 25
-}
-ent_brush
-{
-	angle 0
-	col_height 1
-	col_width 1
-	height 1
 	texture Brick
 	width 0.5
 	x 87.5
