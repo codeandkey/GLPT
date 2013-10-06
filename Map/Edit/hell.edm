@@ -1,0 +1,274 @@
+ent_brush
+{
+	angle 5.49675
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x -3.5
+	y -2.5
+}
+global_properties
+{
+	death_line -25
+}
+ent_brush
+{
+	angle 5.49675
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x 2.5
+	y -2.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x -0.5
+	y 1.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 2.5
+	x -7.5
+	y -3.5
+}
+ent_brush
+{
+	angle 1.5705
+	col_height 1
+	col_width 1
+	height 0
+	texture Dirt
+	width 0
+	x 6
+	y -3
+}
+ent_player
+{
+	angle 0
+	x -39.5
+	y 6
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0.5
+	x -0.5
+	y -2.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 0.5
+	x 6.5
+	y -3.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 3
+	x -39.5
+	y 3
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 0.5
+	x -36.5
+	y 4
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 0.5
+	x -42.5
+	y 4
+}
+ent_brush
+{
+	angle 3.92625
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0.5
+	x -27
+	y 4
+}
+ent_brush
+{
+	angle 5.49675
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0.5
+	x -27
+	y 0.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0
+	x -39
+	y 2
+}
+ent_brush
+{
+	angle 5.49675
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0.5
+	x -23
+	y 1
+}
+ent_brush
+{
+	angle 6.0037
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 1
+	x -21
+	y 3.5
+}
+ent_brush
+{
+	angle 4.7115
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 4.5
+	x -13
+	y 6
+}
+ent_brush
+{
+	angle 5.49675
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0.5
+	x -17
+	y -3
+}
+ent_brush
+{
+	angle 5.49675
+	col_height 1
+	col_width 1
+	height 1
+	texture Dirt
+	width 1
+	x -13
+	y -3
+}
+ent_brush
+{
+	angle 5.49675
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0.5
+	x -13
+	y 1.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 0.5
+	x -42.5
+	y 7.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 0.5
+	x -36.5
+	y 7.5
+}
+ent_brush
+{
+	angle 0
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Brick
+	width 3
+	x -39.5
+	y 8.5
+}
+ent_brush
+{
+	angle 5.49675
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0.5
+	x -32.5
+	y -1.5
+}
+ent_brush
+{
+	angle 5.83962
+	col_height 1
+	col_width 1
+	height 0.5
+	texture Dirt
+	width 0.5
+	x -16
+	y 3
+}

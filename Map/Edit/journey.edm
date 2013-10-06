@@ -2096,12 +2096,12 @@ ent_brush
 }
 ent_brush
 {
-	angle 4.7115
+	angle 0
 	col_height 1
 	col_width 1
-	height 1
+	height 0.5
 	texture Dirt
-	width 0.5
+	width 1
 	x 39
 	y -7
 }
@@ -2822,7 +2822,7 @@ ent_brush
 }
 ent_brush
 {
-	angle 0.142854
+	angle 0
 	col_height 1
 	col_width 1
 	height 0.5
@@ -2877,7 +2877,7 @@ ent_brush
 }
 ent_brush
 {
-	angle 6.16632
+	angle 0
 	col_height 1
 	col_width 1
 	height 0.5
@@ -3229,7 +3229,7 @@ ent_brush
 }
 ent_brush
 {
-	angle 0.248381
+	angle 0
 	col_height 1
 	col_width 1
 	height 0.5
@@ -3328,12 +3328,12 @@ ent_brush
 }
 ent_brush
 {
-	angle 4.7115
+	angle 0
 	col_height 1
 	col_width 1
-	height 1
+	height 0.5
 	texture Dirt
-	width 0.5
+	width 1
 	x 49
 	y -11
 }
@@ -3427,7 +3427,7 @@ ent_brush
 }
 ent_brush
 {
-	angle 6.19001
+	angle 0
 	col_height 1
 	col_width 1
 	height 0.5
