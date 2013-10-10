@@ -132,7 +132,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="radiosity.hlsl">
+    <None Include="..\Resource\Shader\radiosity.hlsl">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resource\Shader\radiosity_overlay.hlsl">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

@@ -33,6 +33,7 @@ int main(int argc,char** argv) {
 	GLPT_iterator->Push(new GameCamera());
 	GLPT_iterator->Push(new Parallax());
 	GLPT_iterator->Push(new Overlay());
+	GLPT_iterator->Push(new Radiosity());
 
 	GLPT_engine->Begin();
 

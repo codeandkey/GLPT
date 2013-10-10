@@ -195,6 +195,8 @@ void Graphics::Present(void) {
 	dx_swap_chain->Present((window_data.vertical_sync) ? 1 : 0,0);
 }
 
+
+
 Graphics::~Graphics(void) {
 
 	dx_screen_target->Release();

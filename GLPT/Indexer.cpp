@@ -11,9 +11,8 @@ ID3D10ShaderResourceView* Indexer::LoadTexture(std::string filename) {
 	try {
 		Indexer::texture_index.at(filename);
 	} catch(std::out_of_range) {
-		return Indexer::CreateFromFile(filename);
+		texture_index[filename]=Indexer::CreateFromFile(filename);
 	}
-
 	return Indexer::texture_index.at(filename);
 
 }

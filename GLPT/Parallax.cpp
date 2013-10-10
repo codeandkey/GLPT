@@ -6,7 +6,8 @@ void Parallax::EventDraw(void) {
 	// How should each layer be positioned?
 	// Based on the camera X value, and DIVIDE by inverse depth.
 
-	GameCamera* camera=(GameCamera*) GLPT_iterator->GetByIdentity("global_ent_gamecamera");
+	static GameCamera* camera=(GameCamera*) GLPT_iterator->GetByIdentity("global_ent_gamecamera");
+	if (!camera) camera=(GameCamera*) GLPT_iterator->GetByIdentity("global_ent_gamecamera");
 
 	float camera_x,camera_y;
 	camera->GetPosition(&camera_x,&camera_y,NULL);
@@ -26,7 +27,7 @@ void Parallax::EventDraw(void) {
 }
 
 void Parallax::EventCreate(EntityLoadData*) {
-	SetEventDepth(-5);
+	SetEventDepth(5);
 
 	ZeroMemory(parallax_buffer,sizeof(std::vector<ParallaxObject>)*MAX_PARALLAX_LAYERS);
 

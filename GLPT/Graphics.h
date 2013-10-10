@@ -18,6 +18,8 @@ public:
 	}
 	EResult Initialize(WindowData,std::string);
 	ID3D10Device* GetGraphicsDevice(void) {return dx_device;}
+	void BindToScreenTarget(void);
+	void UnbindFromScreenTarget(void);
 	void Clear(void);
 	void Present(void);
 private:
@@ -29,7 +31,7 @@ private:
 
 	ID3D10Device* dx_device;
 	IDXGISwapChain* dx_swap_chain;
-	ID3D10RenderTargetView* dx_screen_target,*dx_texture_target;
+	ID3D10RenderTargetView* dx_screen_target,*dx_texture_target,*dx_previous_target;
 	ID3D10Texture2D* dx_depth_texture,*dx_render_texture;
 	ID3D10ShaderResourceView* dx_render_texture_resource;
 	ID3D10DepthStencilView* dx_depth_stencil;

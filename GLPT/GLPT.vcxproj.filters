@@ -177,7 +177,10 @@
     <None Include="..\Resource\Shader\entity_overlay.hlsl">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="radiosity.hlsl">
+    <None Include="..\Resource\Shader\radiosity.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Resource\Shader\radiosity_overlay.hlsl">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

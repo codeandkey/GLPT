@@ -1,0 +1,3 @@
+animation LightPoint
+	radiosity/light_point 0
+end

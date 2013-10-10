@@ -8,3 +8,4 @@
 #include "Parallax.h"
 #include "Overlay.h"
 #include "Properties.h"
+#include "Radiosity.h"

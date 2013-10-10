@@ -5,7 +5,7 @@
 
 void Player::EventCreate(EntityLoadData* data) {
 	SetIdentity("ins_player");
-	SetEventDepth(0);
+	SetEventDepth(-5);
 
 	if (!data) {
 		PostWarning("Player created with no initial data. Destroying.");
@@ -77,8 +77,11 @@ void Player::EventStep(void) {
 
 	float player_decel_rate=1.06;
 
-	Overlay* overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
-	Property* prop_entity=(Property*) GLPT_iterator->GetByIdentity("property");
+	static Overlay* overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
+	if (!overlay_entity) overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
+
+	static Property* prop_entity=(Property*) GLPT_iterator->GetByIdentity("property");
+	if (!prop_entity) prop_entity=(Property*) GLPT_iterator->GetByIdentity("property");
 
 	float death_mark=(prop_entity) ? prop_entity->GetDeathPosition() : -25.0f;
 

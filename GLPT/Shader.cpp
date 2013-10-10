@@ -82,6 +82,7 @@ void Shader::Texture(ID3D10ShaderResourceView* texture) {
 	if (current_texture==texture) return;
 	
 	dx_effect->GetVariableByName("GLPT_texture")->AsShaderResource()->SetResource(texture);
+	current_texture=texture;
 }
 
 void Shader::Transform(D3DXMATRIX transform) {

@@ -58,9 +58,9 @@ float4 PostPixelShader(InputPixel input) : SV_Target {
 		}
 	}
 
-	if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.3) {
+	if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.5) {
        output_color = output_sum*output_sum*0.012 + GLPT_texture.Sample(linear_sample,input.texcoord);
-    } else if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.5) {
+    } else if (GLPT_texture.Sample(linear_sample,input.texcoord).r < 0.8) {
         output_color = output_sum*output_sum*0.0009 + GLPT_texture.Sample(linear_sample,input.texcoord);
     } else {
         output_color = output_sum*output_sum*0.00075 + GLPT_texture.Sample(linear_sample,input.texcoord);

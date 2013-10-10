@@ -3,7 +3,7 @@
 
 void Overlay::EventCreate(EntityLoadData*) {
 	SetIdentity("global_ent_overlay");
-	SetEventDepth(-10);
+	SetEventDepth(-50);
 
 	overlay_shader=new Shader;
 	overlay_shader->Initialize("entity_overlay.hlsl",BasicVertex::layout,BasicVertex::layout_size);
