@@ -1,1 +1,1 @@
-start GLPT -map journey -vertical_sync -fullscreen -native_resolution
+start GLPT -map hall -width 400 -height 300 -fullscreen
