@@ -9,20 +9,7 @@
 #include <vector>
 #include <ctime>
 
-#include <Windows.h>
-
-#include <Windowsx.h>
-#include <d3d10.h>
-#include <D3DX10.h>
-#include <DXGI.h>
-
-#pragma comment (lib,"d3d10.lib")
-#pragma comment (lib,"d3dx10.lib")
-#pragma comment (lib,"dxgi.lib")
-
 #include <Box2D/Box2D.h>
-
-#pragma comment (lib,"Box2D.lib")
 
 class Logger {
 public:
@@ -45,16 +32,9 @@ public:
 
 static Logger GLPT_logger;
 
-struct Layout {
-	std::string name;
-	DXGI_FORMAT type;
-};
-
 struct BasicVertex {
 	float x,y,z;
 	float tx,ty;
-	static Layout layout[2];
-	static unsigned int layout_size;
 	static void make_rectangle(BasicVertex* vertices_6,float w,float h,float stretch_width=0.0f,float stretch_height=0.0f);
 };
 
@@ -85,10 +65,7 @@ struct WindowData {
 	int width,height;
 	bool fullscreen,vertical_sync;
 	void Native(void) {
-		RECT win_rect;
-		GetWindowRect(GetDesktopWindow(),&win_rect);
-		width=win_rect.right;
-		height=win_rect.bottom;
+		/* not implemented */
 	}
 };
 

@@ -1,7 +1,9 @@
 #include "GLPT.h"
 #include "Player.h"
-#include "Overlay.h"
 #include "Properties.h"
+
+#define max(x, y) ((x > y) ? x : y)
+#define min(x, y) ((x < y) ? x : y)
 
 void Player::EventCreate(EntityLoadData* data) {
 	SetIdentity("ins_player");
@@ -58,10 +60,10 @@ void Player::EventStep(void) {
 	// Movement control here.
 
 	if (initial_player_spawn) {
-		Overlay* overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
+		/*Overlay* overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
 		if (overlay_entity) {
 			overlay_entity->SetFadeData(1.0f,1.0f,1.0f,1.0f);
-		}
+		}*/
 		
 		initial_player_spawn=false;
 	}
@@ -77,8 +79,8 @@ void Player::EventStep(void) {
 
 	float player_decel_rate=1.06;
 
-	static Overlay* overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
-	if (!overlay_entity) overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
+	/* static Overlay* overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay");
+	if (!overlay_entity) overlay_entity=(Overlay*) GLPT_iterator->GetByIdentity("global_ent_overlay"); */
 
 	static Property* prop_entity=(Property*) GLPT_iterator->GetByIdentity("property");
 	if (!prop_entity) prop_entity=(Property*) GLPT_iterator->GetByIdentity("property");
@@ -97,7 +99,7 @@ void Player::EventStep(void) {
 	// Now, for literal movement and animation controls.
 
 	// Jumping.
-	if (GLPT_input->KD(VK_UP) && player_can_jump) {
+	if (GLPT_input->KD(GLFW_KEY_UP) && player_can_jump) {
 		phys_object->SetLinearVelocity(b2Vec2(player_velocity.x,9.5f));
 		player_velocity=phys_object->GetLinearVelocity();
 		ani->SetAnimationState("BeginJump");
@@ -105,7 +107,7 @@ void Player::EventStep(void) {
 		player_can_jump=false;
 	}
 
-	if (!GLPT_input->KD(VK_UP) && player_velocity.y>0) {
+	if (!GLPT_input->KD(GLFW_KEY_UP) && player_velocity.y>0) {
 		player_velocity.y/=1.05;
 		phys_object->SetLinearVelocity(player_velocity);
 	}
@@ -113,13 +115,13 @@ void Player::EventStep(void) {
 	// LR Movement.
 
 	if (player_can_move) {
-		if (GLPT_input->KD(VK_RIGHT)) {
+		if (GLPT_input->KD(GLFW_KEY_RIGHT)) {
 			player_velocity.x=min(player_velocity.x+=0.5f,6);
 			phys_object->SetLinearVelocity(player_velocity);
 			draw_object.Flip(false);
 			if (player_can_jump && ani->GetAnimationState()!="Walking") ani->SetAnimationState("Walking");
 		}
-		if (GLPT_input->KD(VK_LEFT)) {
+		if (GLPT_input->KD(GLFW_KEY_LEFT)) {
 			player_velocity.x=max(player_velocity.x-0.5f,-6.0f);
 			phys_object->SetLinearVelocity(player_velocity);
 			draw_object.Flip(true);
@@ -129,12 +131,12 @@ void Player::EventStep(void) {
 
 	// Animation control.
 
-	if (!GLPT_input->KD(VK_LEFT) && !GLPT_input->KD(VK_RIGHT) &&
+	if (!GLPT_input->KD(GLFW_KEY_LEFT) && !GLPT_input->KD(GLFW_KEY_RIGHT) &&
 	ani->GetAnimationState()=="Walking" && player_can_jump) {
 		ani->SetAnimationState("Idle");
 	}
 
-	if (!GLPT_input->KD(VK_LEFT) && !GLPT_input->KD(VK_RIGHT) &&
+	if (!GLPT_input->KD(GLFW_KEY_LEFT) && !GLPT_input->KD(GLFW_KEY_RIGHT) &&
 	ani->GetAnimationState()=="Idle" && player_can_jump) {
 		player_velocity.x/=player_decel_rate;
 		phys_object->SetLinearVelocity(player_velocity);
@@ -148,6 +150,7 @@ void Player::EventStep(void) {
 		ani->SetAnimationState("EndJump");
 	}
 
+	/*
 	if (player_position.y < death_mark) {
 		if (overlay_entity) {
 			overlay_entity->SetFadeData(1.0f,0.0f,0.0f,(25-abs((death_mark-25)-player_position.y))/25.0f);
@@ -160,11 +163,12 @@ void Player::EventStep(void) {
 			overlay_entity->SetFadeData(1.0f,1.0f,1.0f,over_a/1.02f);
 		}
 	}
+	*/
 
 	if (player_position.y <= death_mark-25.0f) {
 		player_position=initial_position;
 		phys_object->SetTransform(initial_position,0.0f);
-		if (overlay_entity) overlay_entity->SetFadeData(1.0f,1.0f,1.0f,1.0f);
+		// if (overlay_entity) overlay_entity->SetFadeData(1.0f,1.0f,1.0f,1.0f);
 	}
 }
 

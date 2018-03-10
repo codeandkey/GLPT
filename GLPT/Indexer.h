@@ -7,10 +7,10 @@
 
 class Indexer {
 public:
-	static ID3D10ShaderResourceView* LoadTexture(std::string filename);
+	static int LoadTexture(std::string filename);
 private:
-	static ID3D10ShaderResourceView* CreateFromFile(std::string filename);
-	static std::map<std::string,ID3D10ShaderResourceView*> texture_index;
+	static int CreateFromFile(std::string filename);
+	static std::map<std::string,int> texture_index;
 };
 
 #endif

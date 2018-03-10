@@ -1,1 +1,0 @@
-start GLPT -map hall -width 400 -height 300 -fullscreen

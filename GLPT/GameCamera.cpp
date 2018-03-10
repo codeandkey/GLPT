@@ -4,7 +4,7 @@
 void GameCamera::EventCreate(EntityLoadData*) {
 
 	x=y=z=tx=ty=tz=0.0f;
-	tz=-10.0f;
+	z = tz = 20.0f;
 	following_player=true;
 
 	SetIdentity("global_ent_gamecamera");
@@ -31,7 +31,7 @@ void GameCamera::EventStep(void) {
 
 	GLPT_camera->Set2D(false);
 	GLPT_camera->SetPosition(x,y,z);
-	GLPT_camera->LookAt(x,y,z+10);
+	GLPT_camera->LookAt(x,y,0.0f);
 }
 
 void GameCamera::FollowPlayer(bool f) {

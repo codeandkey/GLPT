@@ -1,6 +1,8 @@
 #include "Library.h"
 #include "Input.h"
 
+#include <GLFW/glfw3.h>
+
 std::map<ControlKey,int> Input::control_map;
 
 Input* GLPT_input;
@@ -25,7 +27,7 @@ bool Input::KD(ControlKey key) {
 
 void Input::DefaultControls(void) {
 	control_map.clear();
-	control_map[C_MOVE_RIGHT]=VK_RIGHT;
-	control_map[C_MOVE_LEFT]=VK_LEFT;
-	control_map[C_JUMP]=VK_SPACE;
+	control_map[C_MOVE_RIGHT]=GLFW_KEY_RIGHT;
+	control_map[C_MOVE_LEFT]=GLFW_KEY_LEFT;
+	control_map[C_JUMP]=GLFW_KEY_SPACE;
 }

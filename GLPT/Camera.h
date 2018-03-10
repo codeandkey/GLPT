@@ -1,7 +1,8 @@
 #pragma once
 #include "Library.h"
-class Camera;
+#include "linmath.h"
 
+class Camera;
 extern Camera* GLPT_camera;
 
 class Camera {
@@ -19,7 +20,7 @@ public:
 	void Set2D(bool d) {mode_2d=d;}
 	void DrawPosition(float x, float y, float z);
 	void DrawAngle(float xy, float xz , float yz);
-	D3DXMATRIX GetTransform(void);
+	void GetTransform(mat4x4 dest);
 private:
 	Camera(void);
 	void Update(void);
@@ -29,5 +30,6 @@ private:
 	float fov;
 	float dx,dy,dz,dxy,dxz,dyz;
 
-	D3DXMATRIX world,view,proj;
+	mat4x4 world,view,proj;
+	mat4x4 fin, fin_2d;
 };

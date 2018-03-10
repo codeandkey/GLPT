@@ -13,11 +13,8 @@ public:
 	Window(void) {GLPT_window=this;req_close=false;}
 	EResult Initialize(WindowData wd);
 	bool RequestedClose(void);
-	LRESULT WndProc(HWND handle,UINT msg,WPARAM wp,LPARAM lp);
 	void Update(void);
-	HWND WindowHandle(void) {return window_handle;}
 private:
-	HWND window_handle;
 	bool req_close;
 };
 

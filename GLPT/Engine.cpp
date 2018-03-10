@@ -8,14 +8,11 @@
 #include "Camera.h"
 #include "Timer.h"
 
+#include <unistd.h>
+
 // GLOBAL static defines here.
 
 	// BasicVertex static members :
-		Layout BasicVertex::layout[2] = {
-			"position",DXGI_FORMAT_R32G32B32_FLOAT,
-			"texcoord",DXGI_FORMAT_R32G32_FLOAT
-		};
-		unsigned int BasicVertex::layout_size=2;
 		void BasicVertex::make_rectangle(BasicVertex* vertices,float w,float h,float stretch_w,float stretch_h) {
 
 			vertices[0].x=-w; // Tri1 : Bottom left.
@@ -107,8 +104,8 @@ EResult Engine::Initialize(int argc,char** argv,void(*bind_ents)(void)) {
 	if (init_map=="") init_map="default";
 	if (ArgumentSet(argc,argv,"-native_resolution")) win_init_data.Native();
 
-	if (!win_init_data.width) win_init_data.width=640;
-	if (!win_init_data.height) win_init_data.height=480;
+	if (!win_init_data.width) win_init_data.width=1366;
+	if (!win_init_data.height) win_init_data.height=768;
 
 	window_handle=new Window();
 
@@ -118,7 +115,7 @@ EResult Engine::Initialize(int argc,char** argv,void(*bind_ents)(void)) {
 		return output;
 	}
 
-	output=GLPT_graphics->Initialize(win_init_data,"post_process");
+	output=GLPT_graphics->Initialize(win_init_data);
 
 	if (output.Error()) {
 		return output;
@@ -158,7 +155,6 @@ void Engine::Begin(void) {
 	requested_terminate=false;
 
 	while(!requested_terminate) {
-
 		GLPT_window->Update();
 
 		GLPT_physics->UpdateWorld();
@@ -168,8 +164,11 @@ void Engine::Begin(void) {
 
 		GLPT_graphics->Present();
 
-		if (GLPT_input->KD(27)) End();
+		if (GLPT_input->KD(GLFW_KEY_ESCAPE)) End();
 		if (window_handle->RequestedClose()) End();
+
+		/* we're gonna want to try and limit the framerate to 60. */
+		usleep(1000000 / 60);
 	}
 }
 

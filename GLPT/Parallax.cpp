@@ -29,7 +29,7 @@ void Parallax::EventDraw(void) {
 void Parallax::EventCreate(EntityLoadData*) {
 	SetEventDepth(5);
 
-	ZeroMemory(parallax_buffer,sizeof(std::vector<ParallaxObject>)*MAX_PARALLAX_LAYERS);
+	memset(parallax_buffer, 0, MAX_PARALLAX_LAYERS * sizeof *parallax_buffer);
 
 	std::string parallax_depth_1="scene/grass_0";
 

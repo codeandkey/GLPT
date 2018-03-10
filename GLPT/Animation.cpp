@@ -92,7 +92,7 @@ void Animation::UpdateAnimation(void) {
 
 }
 
-ID3D10ShaderResourceView* Animation::GetCurrentTexture(void) {
+int Animation::GetCurrentTexture(void) {
 	try {
 		animation_buffer.at(current_event).at(current_animation_index);
 	} catch(std::out_of_range) {

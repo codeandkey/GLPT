@@ -2,6 +2,7 @@
 #define _GLPT_SHADER
 
 #include "Library.h"
+#include "linmath.h"
 
 //  Pre-defined shader semantics.
 //  GLPT_texture : currently bound texture.
@@ -17,7 +18,7 @@ public:
 		return Shader::current_shader;
 	}
 
-	EResult Initialize(std::string shader_name,Layout*,unsigned int);
+	EResult Initialize(std::string, std::string);
 
 	void Release(void);
 	void SetAsCurrent(void) {
@@ -25,8 +26,8 @@ public:
 	}
 
 	void Bind(void);
-	void Transform(D3DXMATRIX);
-	void Texture(ID3D10ShaderResourceView*);
+	void Transform(mat4x4);
+	void Texture(int);
 	void Blur(float);
 	void FlipH(bool);
 	void SetVariant(std::string,float);
@@ -34,9 +35,8 @@ public:
 private:
 	static Shader* current_shader;
 	static Shader* bound_shader;
-	ID3D10ShaderResourceView* current_texture;
-	ID3D10Effect* dx_effect;
-	ID3D10InputLayout* dx_input_layout;
+	int current_texture;
+	unsigned int vs, fs, prg, loc_flip, loc_xform;
 	std::string shader_name;
 };
 

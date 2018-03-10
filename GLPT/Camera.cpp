@@ -6,7 +6,7 @@ Camera::Camera(void) {
 	mode_2d=false;
 	x=y=z=0.0f;
 	lx=ly=0.0f;
-	lz=-10.0f;
+	lz=10.0f;
 	fov=60.0f * 3.141f / 180.0f;
 	dx=dy=dz=dxy=dxz=dyz=0.0f;
 }
@@ -58,22 +58,28 @@ void Camera::DrawAngle(float xy,float xz, float yz) {
 }
 
 void Camera::Update(void) {
-	D3DXMATRIX rotate;
+	mat4x4 trans;
+	mat4x4_translate(trans, dx, dy, dz);
+	mat4x4_rotate(world, trans, 0.0f, 0.0f, 1.0f, dxy);
 
-	D3DXMatrixTranslation(&world,dx,dy,dz);
-	D3DXMatrixRotationZ(&rotate,dxy);
+	vec3 eye = {x, y, z}, center = {lx, ly, lz}, up = {0, 1, 0};
+	mat4x4_look_at(view, eye, center, up);
 
-	world=rotate * world;
+	mat4x4_perspective(proj, fov, (float) GLPT_width / (float) GLPT_height, 0.1f, 100.0f);
 
-	D3DXMatrixLookAtLH(&view,&D3DXVECTOR3(x,y,z),&D3DXVECTOR3(lx,ly,lz),&D3DXVECTOR3(0,1,0));
-	D3DXMatrixPerspectiveFovLH(&proj,fov,(float) GLPT_width / (float) GLPT_height,0.1f,1000.0f);
+	//mat4x4_identity(world);
 }
 
-D3DXMATRIX Camera::GetTransform(void) {
+void Camera::GetTransform(mat4x4 dest) {
 	if (mode_2d) {
-		D3DXMatrixOrthoLH(&proj,2.0f,2.0f,-10.0f,10.0f);
-		return (world * proj);
+		mat4x4_ortho(proj, -1.0f, 1.0f, -1.0f, 1.0f, -10.0f, 10.0f);
+		mat4x4_mul(dest, proj, view);
+		printf("in mode2d\n");
+		return;
 	}
 
-	return (world * view * proj);
+	mat4x4 prefin;
+	mat4x4_identity(prefin);
+	mat4x4_mul(prefin, view, world);
+	mat4x4_mul(dest, proj, prefin);
 }

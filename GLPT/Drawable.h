@@ -8,10 +8,11 @@
 #include "Animation.h"
 #include "Timer.h"
 
+#include <GLXW/glxw.h>
+
 template <typename T> class Drawable {
 public:
 	Drawable(void) {
-		draw_mode=D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 		texture_animation=NULL;
 		hflip=false;
 	}
@@ -19,39 +20,32 @@ public:
 		texture_animation=a;
 	}
 	void Load(T* vertex_data,unsigned int vertex_count,Shader* render_shader=Shader::GetCurrentShader()) {
-		D3D10_BUFFER_DESC dx_buffer_desc;
-		D3D10_SUBRESOURCE_DATA dx_init_data;
-		HRESULT hr;
 		this->render_shader=render_shader;
 		this->vertex_count=vertex_count;
 
-		ZeroMemory(&dx_buffer_desc,sizeof dx_buffer_desc);
+		glGenVertexArrays(1, &vao);
+		glBindVertexArray(vao);
 
-		dx_buffer_desc.BindFlags=D3D10_BIND_VERTEX_BUFFER;
-		dx_buffer_desc.ByteWidth=sizeof(T)*vertex_count;
-		dx_buffer_desc.CPUAccessFlags=0;
-		dx_buffer_desc.Usage=D3D10_USAGE_DEFAULT;
-		dx_buffer_desc.MiscFlags=0;
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-		ZeroMemory(&dx_init_data,sizeof dx_init_data);
+		glBufferData(GL_ARRAY_BUFFER, vertex_count * sizeof(T), vertex_data, GL_STATIC_DRAW);
 
-		dx_init_data.pSysMem=vertex_data;
-		dx_init_data.SysMemPitch=sizeof(T)*vertex_count;
-		dx_init_data.SysMemSlicePitch=0;
-
-		hr=GLPT_graphics->GetGraphicsDevice()->CreateBuffer(&dx_buffer_desc,&dx_init_data,&dx_vertex_buffer);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), NULL);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*) (3 * sizeof(float)));
 	}
 	void Texturize(std::string filename) {
 		texture=Indexer::LoadTexture(filename);
 	}
-	void Texturize(ID3D10ShaderResourceView* tex) {
+	void Texturize(int tex) {
 		texture=tex;
 	}
 	void Flip(bool horizontal) {
 		hflip=horizontal;
 	}
 	void Release(void) {
-		glDeleteBuffers(1,&vertex_buffer);
+		glDeleteVertexArrays(1, &vao);
+		glDeleteBuffers(1, &vbo);
 	}
 	void Draw(float x=0.0f,float y=0.0f,float angle_r=0.0f,float z=0.0f) {
 		unsigned int stride=sizeof(T),offset=0;
@@ -72,27 +66,31 @@ public:
 		GLPT_camera->DrawAngle(angle_r,0,0);
 		GLPT_camera->DrawPosition(x,y,z);
 
-		render_shader->Transform(GLPT_camera->GetTransform());
+		render_shader->Bind();
+
+		mat4x4 xf;
+		GLPT_camera->GetTransform(xf);
+		render_shader->Transform(xf);
 
 		render_shader->Texture(texture);
 		render_shader->FlipH(hflip);
 
-		render_shader->Bind();
+		glBindVertexArray(vao);
 
-		GLPT_graphics->GetGraphicsDevice()->IASetPrimitiveTopology(draw_mode);
-		GLPT_graphics->GetGraphicsDevice()->IASetVertexBuffers(0,1,&dx_vertex_buffer,&stride,&offset);
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
 
-		GLPT_graphics->GetGraphicsDevice()->Draw(vertex_count,0);
+		glDrawArrays(GL_TRIANGLES, 0, vertex_count);
 
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
 	}
 private:
 	bool hflip;
 	Animation* texture_animation;
 	Shader* render_shader;
-	ID3D10ShaderResourceView* texture;
-	ID3D10Buffer* dx_vertex_buffer;
 	unsigned int vertex_count;
-	D3D10_PRIMITIVE_TOPOLOGY draw_mode;
+	unsigned int vbo, vao, texture;
 };
 
 #endif
