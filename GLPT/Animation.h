@@ -1,6 +1,5 @@
 #pragma once
 #include "Library.h"
-#include <chrono>
 
 class Animation {
 public:
@@ -16,5 +15,5 @@ private:
 	std::map<std::string,std::vector<int>> animation_buffer;
 	std::map<std::string,std::vector<unsigned int>> animation_timer_buffer;
 	unsigned int current_animation_index;
-	unsigned int ticket;
+	int64_t ticket;
 };
