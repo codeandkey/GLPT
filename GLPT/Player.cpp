@@ -116,7 +116,8 @@ void Player::EventStep(void) {
 
 	if (player_can_move) {
 		if (GLPT_input->KD(GLFW_KEY_RIGHT)) {
-			player_velocity.x=min(player_velocity.x+=0.5f,6);
+			if (player_velocity.x < 6) 
+				player_velocity.x=min(player_velocity.x+=0.5f,6);
 			phys_object->SetLinearVelocity(player_velocity);
 			draw_object.Flip(false);
 			if (player_can_jump && ani->GetAnimationState()!="Walking") ani->SetAnimationState("Walking");
